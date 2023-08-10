@@ -57,8 +57,11 @@ Builder.load_file("kv\widgets\\topbar.kv")
 
 
 
+
 class iDeaApp(MDApp):
     def build(self):
+        self.theme_cls.material_style = "M3"
+        self.theme_cls.theme_style = "Light"
         self.sm = ManagerScreen()
         return self.sm
 
