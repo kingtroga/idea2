@@ -2,6 +2,8 @@
     name: 'announcements'
     text: 'Announce'
     icon: 'bullhorn-outline'
+    id: announcements
+    on_tab_release: announcements.show_announcements()
     MDScreen:
         md_bg_color: 0, 14/255, 8/255, 1
         AnchorLayout:
@@ -57,5 +59,54 @@
                         width: 1
                         circle: (self.center_x, self.center_y, min(self.width-2, self.height-2)/2, 0, 360)
 
+########################################################################################################################################################
+#### The White Part of the Screen code#################################################################################################################################
+#########################################################################################################################################################################
+            MDFloatLayout:
+                md_bg_color: 1, 1, 1, 1
+                size_hint: 1, .88
+                pos_hint: {"center_x": .5, "y": 0}
+                radius: [40,40, 0, 0]
+                Label:
+                    id: design
+                    canvas:
+                        Color:
+                            rgba: 230/255, 230/255, 230/255, 1
+                        RoundedRectangle:
+                            size: self.width/12, 3
+                            pos: self.width/2 - (self.width/8)/2, self.parent.height - 15
+                            radius: [2]
 
-                     
+                MDLabel:
+                    id: recent
+                    text: "Recent"
+                    font_name: "fonts/arialmt.TTF"
+                    pos_hint: {"center_y": .93 }
+                    x: 26
+                    font_size: "19dp"
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+
+                ScrollView:
+                    do_scroll_x: False
+                    do_scroll_y: True
+                    size_hint: 1, None
+                    size: self.parent.width, self.parent.height
+                    pos: self.parent.pos[0], self.parent.pos[0] - 80
+                    BoxLayout:
+                        id: aBox
+                        orientation: "vertical"
+                        size_hint_y: None
+                        size_hint_x: 1
+                        height: 700
+##############################################################################################################3
+        MDLabel:
+            id: loading
+            text: "Loading..."
+            font_size: "36dp"
+            halign: "center"
+            valign: "center"
+            color: 0, 0, 0, 1
+            opacity: 1
+
+                
