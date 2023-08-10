@@ -1,79 +1,114 @@
-BackButton:
-        pos_hint: {'center_x': 0.08, 'top':0.979}
-    Header:
-        id: headerOne
-        text: "Create Group"
-        halign: "center"
-        pos_hint: {"y": 0.466}
-        color: [0, 0, 0, 1]
-    Header:
-        id: headerTwo
-        text: "Group Description"
-        color: (121/255, 124/255, 123/255, 1)
-        pos_hint: {"y": 0.4, "x":0.06}
-    BoxContainer:
-        md_bg_color: 1, 1, 1, 1
-        pos_hint: {"y": 0.68, "x":0.06}
-        MDLabel:
-            text: "Share information even faster"
-            halign: "left"
-            font_size: "40dp"
-        BoxContainer:
-            md_bg_color: 1, 1, 1, 1
-            size_hint: 1, 0.4
-            orientation: "horizontal"
-            padding: 10, 0, 10,0
-            spacing: -50
-            BubbleItem:
-                text: "Group work"
-            BubbleItem:
-                text: "Assingments"
-                color: 242/255, 248/255, 247/255, 1
-    
-    
-    Header:
-        id: headerThree
-        text: "400L Computer Science"
-        halign: "left"
-        color: (121/255, 124/255, 123/255, 1)
-        pos_hint: {"y": 0.145, "x":0.06}
-    Header:
-        id: headerFour
-        text: "Other Members"
-        halign: "left"
-        color: (121/255, 124/255, 123/255, 1)
-        pos_hint: {"y": -0.1, "x":0.06}
-    
+ChatItem:
+                id: coco
+                avatar: 'images/4.jpg'
+                uppertext: "Janet Doe"
+                icon_size: "45dp"
+                lowertext: "Who am I?"
+                
+                bold: True
+                text_icon_dis: 94
+                uppertextY: 4
+                lowertextY: 20
+                pos: settingsLayout.width - settingsLayout.width + 20, settingsLayout.height - 110
+                back_color: get_color_from_hex("FFFFFF")
+                font_fam1: "fonts/ARIALMTMEDIUM.TTF"
+                
+            ChatItem:
+                icon2: 'key-outline'
+                #avatar2: 'key.png'
+                uppertext: "Account"
+                lowertext: "Privacy, security, change number"
+                #iconp_size: "70dp"
+                
+                #bold: True
+                text_icon_dis: 94
+                uppertextY: 4
+                lowertextY: 20
+                pos: settingsLayout.width - settingsLayout.width + 30, settingsLayout.height - 210
+                back_color: get_color_from_hex('FFFFFF')
+                font_fam1: "fonts/arialmt.TTF"
+                uppertext_size: "18dp"
+                lowertext_size: "15dp"
+                text_icon_dis: 77
+            ChatItem:
+                icon2: 'message-processing-outline'
+                #avatar2: 'key.png'
+                uppertext: "Chat"
+                lowertext: "Chat history,theme,wallpapers"
+                iconp_size: "70dp"
+                #bold: True
+                text_icon_dis: 94
+                uppertextY: 4
+                lowertextY: 20
+                pos: settingsLayout.width - settingsLayout.width + 30, settingsLayout.height - 290
+                back_color: get_color_from_hex('FFFFFF')
+                font_fam1: "fonts/arialmt.TTF"
+                uppertext_size: "18dp"
+                lowertext_size: "15dp"
+                text_icon_dis: 77
+            ChatItem:
+                icon2: 'bell-outline'
+                #avatar2: 'key.png'
+                uppertext: "Notifications"
+                lowertext: "Messages, groups and others"
+                iconp_size: "70dp"
+                #bold: True
+                text_icon_dis: 94
+                uppertextY: 4
+                lowertextY: 20
+                pos: settingsLayout.width - settingsLayout.width + 30, settingsLayout.height - 380
+                back_color:get_color_from_hex('FFFFFF')
+                font_fam1: "fonts/arialmt.TTF"
+                uppertext_size: "18dp"
+                lowertext_size: "15dp"
+                text_icon_dis: 77
+            ChatItem:
+                icon2: 'help-circle-outline'
+                #avatar2: 'key.png'
+                uppertext: "Help"
+                lowertext: "Help center,contact us,privacy policy"
+                iconp_size: "70dp"
+                #bold: True
+                text_icon_dis: 94
+                uppertextY: 4
+                lowertextY: 20
+                pos: settingsLayout.width - settingsLayout.width + 30, settingsLayout.height - 470
+                back_color:get_color_from_hex('FFFFFF')
+                font_fam1: "fonts/arialmt.TTF"
+                uppertext_size: "18dp"
+                lowertext_size: "15dp"
+                text_icon_dis: 77
+            ChatItem:
+                icon2: 'swap-vertical'
+                #avatar2: 'key.png'
+                uppertext: "Storage and data"
+                lowertext: "Network usage, storage usage"
+                iconp_size: "70dp"
+                #bold: True
+                text_icon_dis: 94
+                uppertextY: 4
+                lowertextY: 20
+                pos: settingsLayout.width - settingsLayout.width + 30, settingsLayout.height - 560
+                back_color: get_color_from_hex('FFFFFF')
+                font_fam1: "fonts/arialmt.TTF"
+                uppertext_size: "18dp"
+                lowertext_size: "15dp"
+                text_icon_dis: 77
+            ChatItem:
+                icon2: 'account-multiple-outline'
+                #avatar2: 'key.png'
+                uppertext: "Invite a friend"
+                lowertext: ""
+                iconp_size: "70dp"
+                #bold: True
+                text_icon_dis: 94
+                uppertextY: -7.4
+                lowertextY: 20
+                pos: settingsLayout.width - settingsLayout.width + 30, settingsLayout.height - 640
+                back_color: get_color_from_hex('FFFFFF')
+                font_fam1: "fonts/arialmt.TTF"
+                uppertext_size: "18dp"
+                lowertext_size: "15dp"
+                text_icon_dis: 77
 
-
-
-
-
-
-
-
-
-    MDStackLayout:
-        md_bg_color: [0.5, 0.5, 0.5, 1]
-        orientation: 'lr-tb'
-        id: maggi
-        coconut: "70dp"
-        spacing: "10dp"
-        MDIcon:
-            icon: "magnify"
-            font_size: maggi.coconut
-        MDIcon:
-            icon: "magnify"
-            font_size: maggi.coconut
-        MDIcon:
-            icon: "magnify"
-            font_size: maggi.coconut
-        MDIcon:
-            icon: "magnify"
-            font_size: maggi.coconut
-        MDIcon:
-            icon: "magnify"
-            font_size: maggi.coconut
-        MDIcon:
-            icon: "magnify"
-            font_size: maggi.coconut
+            
