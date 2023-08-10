@@ -4,11 +4,8 @@ Config.set('graphics', 'height', '680')
 Config.write()
 
 from kivymd.app import MDApp
-from kaki.app import App
 from kivy.lang import Builder
-from kivy.factory import Factory
-import os
-from py.screens.manager_screen import ManagerScreen
+
 
 # SCREENS/PYTHON
 from py.screens.manager_screen import ManagerScreen
@@ -55,9 +52,6 @@ Builder.load_file("kv\widgets\\topbar.kv")
 
 
 
-
-
-
 class iDeaApp(MDApp):
     def build(self):
         self.theme_cls.material_style = "M3"
@@ -65,44 +59,8 @@ class iDeaApp(MDApp):
         self.sm = ManagerScreen()
         return self.sm
 
-""" class iDeaApp(App, MDApp):
-
-    CLASSES = {
-        "ManagerScreen": "py.screens.manager_screen",
-        "SplashScreenOne": "py.screens.splash_screen_one",
-        "IdeaLabel1": "py.widgets.idealabel1",
-        "Header": "py.widgets.header",
-        "BubbleItem": "py.widgets.bubbleitem",
-        "ChatItem": "py.widgets.chatitem",
-        "AvatarItem": "py.widgets.avataritem",
-        "SmoothButton": "py.widgets.smoothbutton",
-        #"CreateGroup": "py.screens.create_group",
-        #"SearchScreen": "py.screens.search_screen",
-    }
-
-    KV_FILES = {
-        os.path.join(os.getcwd(), "kv/screens/manager_screen.kv"),
-        os.path.join(os.getcwd(), "kv/screens/splash_screen_one.kv"),
-        #os.path.join(os.getcwd(), "kv/screens/create_group.kv"),
-        os.path.join(os.getcwd(), "kv/widgets/idealabel1.kv"),
-        os.path.join(os.getcwd(), "kv/widgets/header.kv"),
-        os.path.join(os.getcwd(), "kv/widgets/bubbleitem.kv"),
-        os.path.join(os.getcwd(), "kv/widgets/chatitem.kv"),
-        os.path.join(os.getcwd(), "kv/widgets/avataritem.kv"),
-        os.path.join(os.getcwd(), "kv/widgets/smoothbutton.kv"),
-        #os.path.join(os.getcwd(), "kv/screens/search_screen.kv"),
-    }
-
-    AUTORELOADER_PATHS = [
-        (".", {"recursive": True})
-    ]
-    def print_me(self):
-        self.sm.current = "Screen1"
-
-    def build_app(self):
-        print("I'm reloading")
-        self.sm = Factory.ManagerScreen()
-        return self.sm """
+    def on_stop(self):
+        print("Goodbye, World!")
 
 
 if __name__ == '__main__':

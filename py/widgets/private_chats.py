@@ -71,6 +71,7 @@ class PrivateChats(MDBottomNavigationItem):
                             "icon": self.icon_list[i]
                         })
             self.appStart = False
+  
 
     
 

@@ -167,7 +167,8 @@ class LoginIn(Screen):
         self.dialog.dismiss()
         
     def changeScreenToHomeScreen(self, button):
-        self.manager.current = "Screen7"
         self.dialog.dismiss()
+        self.manager.current = "Screen7"
+        
 
 
