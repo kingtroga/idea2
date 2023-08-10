@@ -1,0 +1,22 @@
+<ImageButton>:
+    id: IB
+    icon: ''
+    icon_size: '30dp'
+    theme_icon_color: "Custom"
+    pos_hint: {'right': 0.98, 'top': 0.99}
+    color_line: 1, 1, 1, 1
+    
+    canvas:
+        Color: 
+            rgb: 1, 1, 1, 1
+        RoundedRectangle:
+            source: self.image_source
+            size: self.size
+            pos: self.pos
+            radius: [50]
+    canvas.before:
+        Color:
+            rgb: self.color_line
+        Line:
+            width: 1.2
+            circle: (self.center_x, self.center_y, min(self.width+8, self.height+8)/2, 0, 360)

@@ -1,0 +1,85 @@
+<ChatItem>:
+    size_hint: 1, None
+    height: 80
+    id: chat_item
+    orientation:"horizontal"
+    iconp_size: "55dp"
+    text_icon_dis: 80
+    uppertextY: 2
+    lowertextY: 24
+    back_color: 1, 1, 1, 1
+    font_fam1: "fonts/arialmt.ttf"
+    uppertext_size: "22dp"
+    lowertext_size: "15dp"
+    icon_size: "30dp"
+    icon2: ""
+    icon_color: 121/255, 124/255, 123/255, 1
+    Button:
+        background_normal: ''
+        background_down: ''
+        background_color: chat_item.back_color
+        id: button1
+        text: ""
+        MDIconButton:
+            icon: chat_item.icon2
+            icon_color: chat_item.icon_color
+            icon_size: chat_item.icon_size
+            theme_icon_color: "Custom"
+            #pos_hint: {'right': 0.98, 'top': 0.99}
+            pos: self.parent.pos[0] + 10, self.parent.pos[1] + 12
+            canvas.before:
+                Color: 
+                    rgb: 242/255, 248/255, 247/255, 1
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [50]
+                RoundedRectangle:
+                    source: root.avatar
+                    #color: 1, 1, 1, 1
+                    size: self.size
+                    pos: self.pos
+                    radius: [50]
+
+        BoxLayout:
+            orientation: "vertical"
+            pos: self.parent.pos[0] + chat_item.text_icon_dis, self.parent.pos[1] + chat_item.uppertextY#2
+            size_hint: None, 1
+            width: 400
+            MDLabel:
+                id: uppertext
+                text: root.uppertext
+                font_size: chat_item.uppertext_size
+                font_name: chat_item.font_fam1
+                color: 0, 14/255, 8/255, 1
+                halign: "left"
+                
+        BoxLayout:
+            orientation: "vertical"
+            pos:  self.parent.pos[0] + chat_item.text_icon_dis, self.parent.pos[1] - chat_item.lowertextY#24
+            size_hint: None, 1
+            width: 300
+            MDLabel:
+                id: lovertext
+                text: root.lowertext
+                font_name: "fonts/Montserrat-Light.ttf"
+                font_size: chat_item.lowertext_size
+                color: 121/255, 124/255, 123/255, 1
+                halign: "left"
+        BoxLayout:
+            orientation: "vertical"
+            pos: self.parent.width - 100, self.parent.pos[1] + 5
+            MDLabel:
+                id: timeline
+                text: root.timeline
+                font_size: "12dp" 
+                font_name: "fonts/Montserrat-Light.ttf"
+                color: 121/255, 124/255, 123/255, 1
+                halign: "center"
+        BoxLayout:
+            orientation: "vertical"   
+            pos: self.parent.width - 60 , self.parent.pos[1] + 20
+            MDIcon:
+                color: 1, 0, 0, 1
+                icon: root.icon
+                halign: "left"

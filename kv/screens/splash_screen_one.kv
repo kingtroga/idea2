@@ -1,0 +1,18 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+<SplashScreenOne>:
+    name: "Screen1"
+    #on_touch_down: self.parent.current = "Screen2"
+    canvas.before:
+        PushMatrix:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    canvas.after:
+        PopMatrix:
+    FloatLayout:
+        IdeaLabel1:
+            id: ideaLabel1
+            text: "iDea"
+            pos_hint: {'center_y':0.5, 'center_x': 0.5}

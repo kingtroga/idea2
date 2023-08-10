@@ -1,0 +1,218 @@
+<LoginIn>:
+    name: "Screen5"
+    canvas.before:
+        PushMatrix:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    canvas.after:
+        PopMatrix:
+    FloatLayout:
+        Button:
+            background_down: ''
+            background_normal: ''
+            text: ''
+            size_hint: None, None
+            width: '25dp'
+            height: '33dp'
+            pos_hint: {'center_x': 0.1, 'top':0.98}
+            on_press: root.manager.current = "Screen 3"
+            Image:
+                source: "images/arrow.png"
+                size: self.parent.size
+                pos: self.parent.pos
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: .5, .1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.88}
+            padding: 0
+            spacing: 0
+            Label:
+                color: (0, 14/255, 8/255, 1)
+                id: to_idea
+                text: ' [b]Log in to iDea[/b]'
+                font_name: 'Arialbd'
+                markup: True
+                font_size: "20dp"
+                pos_hint: {'x': 0.5}
+                design_width: root.width/3
+                canvas.before:
+                    Color: 
+                        rgba: (88/255, 195/255, 182/255, 1)
+                    Rectangle:
+                        size: 66, 10
+                        pos: root.width/2 - 67, self.pos[1] + self.pos[1]/26
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: .5, .07
+            pos_hint: {'center_x': 0.3, 'center_y': 0.81}
+            Label:
+                id: welcome_back
+                text: "Welcome back! Sign in using your"
+                font_name: "fonts/Montserrat-Light.ttf"
+                font_size: "18dp"
+                size_hint_x: None
+                size: self.texture_size
+                pos_hint: {'center_x': 0.9}
+                color: (121/255, 124/255, 123/255, 1)
+            Label:
+                id: matric_no
+                text: "matriculation number and password"
+                font_name: "fonts/Montserrat-Light.ttf"
+                font_size: "18dp"
+                size_hint_x: None
+                size: self.texture_size
+                pos_hint: {'center_x': 0.9}
+                color: (121/255, 124/255, 123/255, 1)
+        BoxLayout:
+            orientation:'vertical'
+            size_hint: .5, .1
+            pos_hint: {'center_x': 0.3, 'center_y': 0.55}
+            Label:
+                id: your_matric_no
+                font_name: "fonts/Montserrat-Medium.ttf"
+                font_size: "18dp"
+                text: 'Your matric no/staff id'
+                size_hint_x: None
+                size: self.texture_size
+                pos_hint: {'left': 1}
+                color: (36/255, 120/255, 109/255, 1)
+            TextInput:
+                id: login_text_input1
+                background_normal: ''
+                background_active: ''
+                background_color: (1, 1, 1, 1) 
+                cursor_color: (0, 0, 0, 1)
+                border: (10, 10, 10, 10) 
+                font_name: "Arial"
+                font_size: '19dp'
+                size_hint_x: 1.8
+                multiline: False
+                padding: 0.5
+                line_color: (205/255, 209/255, 208/255, 1)
+
+                # Box Layout / Float Layout / Screen.activateButton()
+                on_touch_down: self.parent.parent.parent.activateButton(*args)
+
+                # Box Layout / Float Layout / Screen.validateFullName()
+                on_cursor: self.parent.parent.parent.validateUserID(*args)
+
+                
+                canvas.before:
+                    PushMatrix:
+                    Color:
+                        rgba: self.line_color
+                    Rectangle:
+                        size: self.width, 1
+                        pos: self.pos
+                    Color:
+                        rgba: (0, 14/255 , 8/255, 1)
+                canvas.after:
+                    PopMatrix:
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: 1.8, .5
+                #spacing: "3dp"
+                MDLabel:
+                    id: invalid_userID_msg
+                    color: [255/255, 45/255, 27/255, 1]
+                    text: "invalid user id"
+                    font_size: "10dp"
+                    #pos: full_name_textInput.pos[0], full_name_textInput.pos[1]
+                    font_name: "fonts/Montserrat-Medium.ttf"
+                    halign: "right"
+                    opacity: 1
+                    #halign: "left"
+        BoxLayout:
+            orientation:'vertical'
+            size_hint: .5, .1
+            pos_hint: {'center_x': 0.3, 'center_y': 0.42}
+            Label:
+                id: password
+                font_name: "fonts/Montserrat-Medium.ttf"
+                font_size: "18dp"
+                text: 'Password'
+                size_hint_x: None
+                size: self.texture_size
+                pos_hint: {'left': 1}
+                color: (36/255, 120/255, 109/255, 1)
+            TextInput:
+                id: login_text_input2
+                background_normal: ''
+                background_active: ''
+                background_color: (1, 1, 1, 1) 
+                font_name: "Arial"
+                font_size: '19dp'
+                cursor_color: (0, 0, 0, 1)
+                border: (10, 10, 10, 10) 
+                size_hint_x: 1.8
+                multiline: False
+                padding: 0.5
+                password: True
+                password_mask: "*"
+                line_color: (205/255, 209/255, 208/255, 1)
+
+                # Box Layout / Float Layout / Screen.activateButton()
+                on_touch_down: self.parent.parent.parent.activateButton(*args)
+
+                # Box Layout / Float Layout / Screen.validateFullName()
+                on_cursor: self.parent.parent.parent.validatePassword(*args)
+                
+                canvas.before:
+                    PushMatrix:
+                    Color:
+                        rgba: self.line_color
+                    Rectangle:
+                        size: self.width, 1
+                        pos: self.pos
+                    Color:
+                        rgba: (0, 0, 0, 1)
+                canvas.after:
+                    PopMatrix:
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: 1.8, .5
+                #spacing: "3dp"
+                MDLabel:
+                    id: invalid_password_msg
+                    color: [255/255, 45/255, 27/255, 1]
+                    text: "invalid password"
+                    font_size: "10dp"
+                    #pos: full_name_textInput.pos[0], full_name_textInput.pos[1]
+                    font_name: "fonts/Montserrat-Medium.ttf"
+                    halign: "right"
+                    opacity: 0
+                    #halign: "left"
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: .9, .07
+            pos_hint: {'center_x': 0.5, 'center_y': 0.13}
+            SmoothButton:
+                id: log_in_button2
+                text:"Log in"
+                back_color: (243/255, 246/255, 246/255, 1)
+                font_name: 'Arialbd'
+                font_size: "15dp"
+                color: (121/255, 124/255, 123/255, 1)
+                on_press:
+                    self.parent.parent.parent.handlePress(*args)   
+                on_release:
+                    self.parent.parent.parent.handleRelease(*args)
+                    self.parent.parent.parent.handleUserLogin(self, app)
+        BoxLayout:
+            orientation: "vertical"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.07}
+            size_hint: .9, .02
+            Button:
+                background_normal: ''
+                background_down: ''
+                background_color: (1, 1, 1, 1)
+                color: (36/255, 120/255, 109/255, 1)
+                text: 'Forgot Password?'
+                on_press: 
+                    self.color = (121/255, 124/255, 123/255, 1)
+                on_release: 
+                    self.color = (36/255, 120/255, 109/255, 1)
+                    self.parent.parent.parent.manager.current = "Screen6"

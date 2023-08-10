@@ -1,0 +1,119 @@
+<CreateGroup>:
+    canvas.before:
+        PushMatrix:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    canvas.after:
+        PopMatrix:
+    MDBoxLayout:
+        orientation: "vertical"
+        MDRelativeLayout:
+            md_bg_color: 1, 1, 1, 1
+            size_hint: 1, 0.3
+            pos_hint: {"center_x":0.5, "center_y":0.5}
+            MDIconButton:
+                id: wait
+                icon: "images/left-arrow.png"
+                pos_hint: {"center_y": 0.6, "x": 0.03}
+                on_release: app.print_me()
+            Header:
+                text: "Create group"
+                halign: "center"
+                pos_hint: {"center_y": 0.6}
+        MDRelativeLayout:
+            #md_bg_color: 1, 1, 0.7, 1
+            Header:
+                id: headerTwo
+                text: "Group Description"
+                color: (121/255, 124/255, 123/255, 1)
+                pos_hint: {"x":0.04, "center_y": 0.9}
+            MDBoxLayout:
+                orientation:"vertical"
+                pos_hint: {"x":0.04, "center_y": 0.4}
+                MDLabel:
+                    text: "Share information even faster"
+                    halign: "left"
+                    font_size: "40dp"
+        MDRelativeLayout:
+            #md_bg_color: 1, 1, 0.7, 1
+            size_hint: 1, 0.6
+            BubbleItem:
+                text: "Group work"
+                pos_hint: {"y":0.3, "x":0.08}
+                size_hint: 0.4, 0.5
+            BubbleItem:
+                text: "               "
+                pos_hint: {"y":0.3, "x":0.45}
+                size_hint: 0.6, 0.5
+
+        MDRelativeLayout:
+            #md_bg_color: 1, 1, 0.7, 1
+            orientation: "vertical"
+            center_y: 400
+            Header:
+                id: headerTwo
+                text: "400L Computer Science"
+                color: (121/255, 124/255, 123/255, 1)
+                pos_hint: {"x":0.04, "center_y": 0.95}
+            
+            ChatItem:
+                avatar: "images/6.jpg"
+                uppertext: "Benjamin Ajibade"
+                lowertext: "Student Admin"
+                timeline: ""
+                icon: ""
+                pos_hint: {"y": -0.25, "x":0.04}
+            ChatItem:
+                avatar: "images/6.jpg"
+                uppertext: "Dr Chris"
+                lowertext: "Lecturer Admin"
+                timeline: ""
+                icon: ""
+                pos_hint: {"center_y": 0.57, "x":0.04}
+            Header:
+                id: headerTwo
+                text: "Other Members"
+                color: (121/255, 124/255, 123/255, 1)
+                pos_hint: {"x":0.04, "center_y":  -0.3}
+        MDRelativeLayout:
+            #md_bg_color: 1, 1, 0.7, 1
+            MDStackLayout:
+                #md_bg_color: 1, 0.7, 1, 1
+                padding: ["13dp", "5dp"]
+                spacing: "20dp"
+                pos_hint: {"y": -0.4, "x": 0.04}
+                AvatarItem:
+                    avatar: "images/6.jpg"
+                AvatarItem:
+                    avatar: "images/4.jpg"
+                AvatarItem:
+                    avatar: "images/3.jpg"
+                AvatarItem:
+                    avatar: "images/5.jpg"
+                AvatarItem:
+                    avatar: "images/1.jpg"
+                AvatarItem:
+                    avatar: "images/2.jpg"
+                AvatarItem:
+                    avatar: ""       
+        MDRelativeLayout:
+            #md_bg_color: 1, 1, 0.7, 1
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: 0.9, 0.35
+                pos_hint: {"center_x": 0.5, "center_y":0.25}
+                SmoothButton:
+                    id: log_in_button2
+                    text:"Create"
+                    back_color: (36/255, 120/255, 109/255, 1)
+                    font_name: 'Arialbd'
+                    font_size: "15dp"
+                    color: (1, 1, 1, 1)
+            
+        
+
+
+        

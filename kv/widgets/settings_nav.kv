@@ -1,0 +1,29 @@
+<SettingsNav>:
+    name: 'settings'
+    text: 'Settings'
+    icon: 'cog-outline'
+    MDScreen:
+        md_bg_color: 0, 14/255, 8/255, 1
+        AnchorLayout:
+            anchor_x: "center"
+            anchor_y: "top"
+            TopBar:
+                id: top_bar_1
+                title: "Settings"
+        MDFloatLayout:
+##################The first part of the MDTopBar##########################################################################################################################################
+            # To hid the real MDTopAppBar left icon
+            MDBoxLayout:
+                size_hint: None, None
+                size: 100, 100
+                pos_hint: {'right': 0.25, 'top': 0.99}
+                md_bg_color: 0, 14/255, 8/255, 1       
+
+            MDIconButton:
+                icon: 'arrow-left-thin'
+                icon_color: 1, 1, 1, 1
+                icon_size: '30dp'
+                theme_icon_color: "Custom"
+                pos: top_bar_1.pos[0] + 10, top_bar_1.pos[1] + 3
+                
+                     

@@ -1,0 +1,14 @@
+<TestScreen>:
+    #on_touch_down: private_chats.show_storys_and_chats()
+    canvas:
+        Color:
+            rgba: 1, 0.4, 0.2, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    NavBar:
+        PrivateChats:
+            id: private_chats
+        GroupChats:
+        Announcements:
+        SettingsNav:
