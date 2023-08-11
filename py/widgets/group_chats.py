@@ -16,8 +16,9 @@ class GroupChats(MDBottomNavigationItem):
                             9: "Cyber Security" }
         self.group_lowertext_list = {7: "Final Year Brethren", 8: "Keep working✍🏾",
                             9: "200 L Cyber Security Students"}
+        Clock.schedule_once(self.show_groups, 0.5)
 
-    def show_groups(self):
+    def show_groups(self, dt=None):
         loading_thread = threading.Thread(target=self.remove_loading, daemon=True)
         loading_thread.start()
         layout = MDFloatLayout(size_hint=(1, 0.34), md_bg_color=get_color_from_hex("#FFFFFF"))
