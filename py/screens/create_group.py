@@ -11,3 +11,6 @@ class CreateGroup(Screen):
     def __init__(self, **kwargs):
         super(CreateGroup, self).__init__(**kwargs)
         self.name  = "Screen8"
+
+    def changeScreenToGroupChatsScreen(self, app):
+        app.root.current = "Screen7"

@@ -6,6 +6,7 @@ from kivy.utils import get_color_from_hex
 from kivy.clock import Clock
 import threading
 
+
 class GroupChats(MDBottomNavigationItem):
     def __init__(self, **kwargs):
         super(GroupChats, self).__init__(**kwargs)
@@ -46,5 +47,13 @@ class GroupChats(MDBottomNavigationItem):
     def _remove_loading(self, dt):
         self.loading = self.ids['loading']
         self.loading.opacity = 0
+
+
+    def printHello(self):
+        print("Hello")
+
+    def changeScreenToCreateGroupScreen(self, app):
+        app.root.current = "Screen8"
+        
 
 

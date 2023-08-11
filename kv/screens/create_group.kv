@@ -1,5 +1,6 @@
 <CreateGroup>:
     name: "Screen8"
+    id: createGroup
     canvas.before:
         PushMatrix:
         Color:
@@ -19,7 +20,7 @@
                 id: wait
                 icon: "images/left-arrow.png"
                 pos_hint: {"center_y": 0.6, "x": 0.03}
-                on_release: app.print_me()
+                on_release: createGroup.changeScreenToGroupChatsScreen(app)
             Header:
                 text: "Create group"
                 halign: "center"
