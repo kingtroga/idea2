@@ -24,6 +24,7 @@ class Announcements(MDBottomNavigationItem):
                 2: "This is a notice to all 400 level students that offer CSC 411 that the venue for the exam is no longer LTB 1, it's now BIG LT",
                 3: "Good Afternoon to all 400 level students that offer CSC 406. There will be CSC 406 class by 10pm today unfailingly. Ensure to be there because attendance will be taken"
                 }
+        Clock.schedule_once(self.show_announcements, 0.5)
 
     def _remove_loading(self, dt):
         self.loading = self.ids['loading']
@@ -37,7 +38,7 @@ class Announcements(MDBottomNavigationItem):
                     break
 
 
-    def show_announcements(self):
+    def show_announcements(self, dt=None):
         loading_thread = threading.Thread(target=self.remove_loading, daemon=True)
         loading_thread.start()
         if self.newAn:
