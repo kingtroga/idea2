@@ -18,7 +18,7 @@ ChatItem:
                 #avatar2: 'key.png'
                 uppertext: "Account"
                 lowertext: "Privacy, security, change number"
-                #iconp_size: "70dp"
+                
                 
                 #bold: True
                 text_icon_dis: 94
@@ -35,7 +35,7 @@ ChatItem:
                 #avatar2: 'key.png'
                 uppertext: "Chat"
                 lowertext: "Chat history,theme,wallpapers"
-                iconp_size: "70dp"
+            
                 #bold: True
                 text_icon_dis: 94
                 uppertextY: 4
@@ -51,7 +51,7 @@ ChatItem:
                 #avatar2: 'key.png'
                 uppertext: "Notifications"
                 lowertext: "Messages, groups and others"
-                iconp_size: "70dp"
+            
                 #bold: True
                 text_icon_dis: 94
                 uppertextY: 4
@@ -67,7 +67,7 @@ ChatItem:
                 #avatar2: 'key.png'
                 uppertext: "Help"
                 lowertext: "Help center,contact us,privacy policy"
-                iconp_size: "70dp"
+            
                 #bold: True
                 text_icon_dis: 94
                 uppertextY: 4
@@ -83,7 +83,7 @@ ChatItem:
                 #avatar2: 'key.png'
                 uppertext: "Storage and data"
                 lowertext: "Network usage, storage usage"
-                iconp_size: "70dp"
+            
                 #bold: True
                 text_icon_dis: 94
                 uppertextY: 4
@@ -99,7 +99,7 @@ ChatItem:
                 #avatar2: 'key.png'
                 uppertext: "Invite a friend"
                 lowertext: ""
-                iconp_size: "70dp"
+            
                 #bold: True
                 text_icon_dis: 94
                 uppertextY: -7.4

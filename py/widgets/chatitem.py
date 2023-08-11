@@ -14,6 +14,7 @@ class ChatItem(BoxLayout):
     lowertext = StringProperty()
     timeline = StringProperty()
     icon = StringProperty()
+    icon2 = StringProperty()
     icon_size = NumericProperty()
     is_bold = BooleanProperty()
     text_icon_dis = NumericProperty()
@@ -21,3 +22,6 @@ class ChatItem(BoxLayout):
     lowertextY = NumericProperty()
     back_color = ListProperty()
     font_fam1 = StringProperty()
+    uppertext_size = NumericProperty()
+    lowertext_size = NumericProperty()
+    
