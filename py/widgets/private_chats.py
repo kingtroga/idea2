@@ -35,6 +35,7 @@ class PrivateChats(MDBottomNavigationItem):
         #################################################
 
         self.lock = threading.Lock()
+        Clock.schedule_once(self.show_storys_and_chats, 0.5)
 
 
 
@@ -55,7 +56,7 @@ class PrivateChats(MDBottomNavigationItem):
                     Clock.schedule_once(self._remove_loading, 1)
                     break
 
-    def show_storys_and_chats(self):
+    def show_storys_and_chats(self, dt=None):
         loading_thread = threading.Thread(target=self.remove_loading, daemon=True)
         loading_thread.start()
         if self.appStart:
