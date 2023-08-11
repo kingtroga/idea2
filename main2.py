@@ -16,6 +16,7 @@ from py.screens.sign_up import SignUp
 from py.screens.login_in import LoginIn
 from py.screens.forgot_password import ForgotPassword
 from py.screens.home import Home
+from py.screens.create_group import CreateGroup
 
 # WIDGETS/PYTHON
 from py.widgets.idealabel1 import IdeaLabel1
@@ -38,6 +39,7 @@ Builder.load_file("kv\screens\sign_up.kv")
 Builder.load_file("kv\screens\login_in.kv")
 Builder.load_file("kv\screens\\forgot_password.kv")
 Builder.load_file("kv\screens\\home.kv")
+Builder.load_file("kv\screens\create_group.kv")
 
 
 # WIDGETS/KIVY
@@ -49,6 +51,7 @@ Builder.load_file("kv\widgets\group_chats.kv")
 Builder.load_file("kv\widgets\\announcements.kv")
 Builder.load_file("kv\widgets\settings_nav.kv")
 Builder.load_file("kv\widgets\\topbar.kv")
+
 
 
 

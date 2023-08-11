@@ -1,0 +1,1 @@
+MAKE login and sign_up stop saving states it's fucking up the sequence of the app

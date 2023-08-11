@@ -1,6 +1,7 @@
 
 from kivymd.app import MDApp
 from py.screens.testScreen import TestScreen
+from py.screens.create_group import CreateGroup
 from py.widgets.navbar import NavBar
 from py.widgets.private_chats import PrivateChats
 from py.widgets.group_chats import GroupChats
@@ -11,6 +12,7 @@ from py.widgets.topbar import TopBar
 from kivy.lang import Builder
 
 Builder.load_file("screen.kv")
+Builder.load_file("kv\screens\create_group.kv")
 Builder.load_file("kv\widgets\\navbar.kv")
 Builder.load_file("kv\widgets\private_chats.kv")
 Builder.load_file("kv\widgets\group_chats.kv")
