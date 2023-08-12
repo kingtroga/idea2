@@ -213,6 +213,8 @@
                     font_size: "15dp"
                     color: (1, 1, 1, 1)
                     radius: [28]
+                    on_press: fake_announcements.handlePublishBtnPress(self)
+                    on_release: fake_announcements.handlePublishBtnRelease(self)
             # CANCEL BOTTOM
             MDBoxLayout:
                 orientation: "vertical"
@@ -221,11 +223,13 @@
                 SmoothButton:
                     id: log_in_button2
                     text:"Cancel"
-                    back_color: 241/255, 255/255, 253/255, 1
+                    back_color: 241/255, 255/255, 253/255, 1 
                     font_name: 'Arialbd'
                     font_size: "15dp"
                     color: 220/255, 0, 0, 1
                     radius: [28]
+                    on_press: fake_announcements.handleCancelBtnPress(self)
+                    on_release: fake_announcements.handleCancelBtnRelease(self)
                     canvas.after:
                         Color:
                             rgba: 180/255, 174/255, 174/255, 0.2
