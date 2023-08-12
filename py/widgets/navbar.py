@@ -8,3 +8,6 @@ class NavBar(MDBottomNavigation):
 
     def work(self, dt):
         print(self.ids)
+
+    def goToFakeAnnoucements(self):
+        self.switch_tab('fake_announcements')

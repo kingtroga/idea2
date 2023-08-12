@@ -14,3 +14,4 @@ class CreateGroup(Screen):
 
     def changeScreenToGroupChatsScreen(self, app):
         app.root.current = "Screen7"
+        
