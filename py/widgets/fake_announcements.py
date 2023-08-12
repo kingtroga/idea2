@@ -1,9 +1,12 @@
 from kivymd.uix.bottomnavigation import MDBottomNavigationItem
 from py.widgets.topbar import TopBar
+from py.widgets.smoothbutton import SmoothButton
 from kivy.lang import Builder
 from kivy.clock import Clock
 
+
 Builder.load_file("kv\widgets\\topbar.kv")
+Builder.load_file("kv\widgets\smoothbutton.kv")
 
 class FakeAnnouncements(MDBottomNavigationItem):
     def __init__(self, **kwargs):

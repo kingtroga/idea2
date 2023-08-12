@@ -62,7 +62,7 @@
                 #md_bg_color: [1, 0.4, 0.5, 1]
                 orientation: "vertical"
                 size_hint: .8, .13
-                pos_hint: {"center_x": 0.5, "center_y": 0.81}
+                pos_hint: {"center_x": 0.5, "center_y": 0.84}
                 #padding: "4dp"
                 MDLabel:
                     text: "Title"
@@ -99,7 +99,7 @@
                 #md_bg_color: [1, 0.4, 0.5, 1]
                 orientation: "vertical"
                 size_hint: .8, .3
-                pos_hint: {"center_x": 0.5, "center_y": 0.58}
+                pos_hint: {"center_x": 0.5, "center_y": 0.61}
                 MDLabel:
                     text: "Content"
                     font_size: "18dp"
@@ -135,7 +135,7 @@
                 #md_bg_color: [1, 0.4, 0.5, 1]
                 orientation: "horizontal"
                 size_hint: .8, .18
-                pos_hint: {"center_x": 0.5, "center_y": 0.27}
+                pos_hint: {"center_x": 0.5, "center_y": 0.33}
                 spacing: "15dp"
                 ToggleButton:
                     text: "hello"
@@ -199,11 +199,44 @@
                         Line:
                             width: 1
                             rounded_rectangle: self.x - 5, self.y - 5, self.width + 10, self.height + 10, 20, 100
+           
+            # PUBLISH BOTTOM
+            MDBoxLayout:
+                orientation: "vertical"
+                size_hint: 0.8, 0.07
+                pos_hint: {"center_x": 0.5, "center_y":0.15}
+                SmoothButton:
+                    id: log_in_button2
+                    text:"Publish"
+                    back_color: 32/255, 160/255, 144/255, 1#(36/255, 120/255, 109/255, 1)
+                    font_name: 'Arialbd'
+                    font_size: "15dp"
+                    color: (1, 1, 1, 1)
+                    radius: [28]
+            # CANCEL BOTTOM
+            MDBoxLayout:
+                orientation: "vertical"
+                size_hint: 0.8, 0.07
+                pos_hint: {"center_x": 0.5, "center_y":0.05}
+                SmoothButton:
+                    id: log_in_button2
+                    text:"Cancel"
+                    back_color: 241/255, 255/255, 253/255, 1
+                    font_name: 'Arialbd'
+                    font_size: "15dp"
+                    color: 220/255, 0, 0, 1
+                    radius: [28]
+                    canvas.after:
+                        Color:
+                            rgba: 180/255, 174/255, 174/255, 0.2
+                        Line:
+                            width: 1
+                            rounded_rectangle: self.x, self.y, self.width, self.height, 17.5, 100
 
 
 
 
-            
         
-        
+    
+    
 
