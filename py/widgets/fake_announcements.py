@@ -1,11 +1,11 @@
 from kivymd.uix.bottomnavigation import MDBottomNavigationItem
-from py.widgets.topbar import TopBar
+#from py.widgets.topbar import TopBar
 from py.widgets.smoothbutton import SmoothButton
 from kivy.lang import Builder
 from kivy.clock import Clock
 from kivy.utils import get_color_from_hex
 
-Builder.load_file("kv\widgets\\topbar.kv")
+#Builder.load_file("kv\widgets\\topbar.kv")
 Builder.load_file("kv\widgets\smoothbutton.kv")
 
 class FakeAnnouncements(MDBottomNavigationItem):
@@ -54,3 +54,6 @@ class FakeAnnouncements(MDBottomNavigationItem):
     def handleCancelBtnRelease(self, btn):
         btn.color = 220/255, 0, 0, 1
         btn.back_color = 241/255, 255/255, 253/255, 1 
+    
+    def changeToAnnouncementScreen(self, app):
+        app.root.current = "Screen7"

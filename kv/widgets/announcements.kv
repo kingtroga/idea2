@@ -44,6 +44,7 @@
                 pos_hint: {'right': 0.98, 'top': 0.99}
                 md_bg_color: 0, 14/255, 8/255, 1
 
+            # CREATE ANNOUNCEMENT BUTTON
             MDIconButton:
                 icon: 'plus'
                 icon_color: 1, 1, 1, 1
@@ -51,7 +52,7 @@
                 icon_size: '30dp'
                 theme_icon_color: "Custom"
                 pos_hint: {'right': 0.98, 'top': 0.99}
-                
+                on_release: announcements.changeToCreateAnnouncementScreen(app)
                 canvas.before:
                     Color: 
                         rgb: 1, 1, 1, 1

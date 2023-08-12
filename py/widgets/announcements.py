@@ -53,3 +53,6 @@ class Announcements(MDBottomNavigationItem):
                     )
             self.newAn = False
 
+    def changeToCreateAnnouncementScreen(self, app):
+        app.root.current = "Screen9"
+

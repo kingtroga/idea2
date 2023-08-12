@@ -134,16 +134,3 @@
                 self.color=(1, 1, 1, 1)
                 self.parent.parent.changeScreenToLoginInScreen(*args)
 
-<SmoothButton@Button>:
-    background_color: (0, 0, 0, 0)          
-    background_normal: ''
-    background_down: ''
-    back_color: (1, 1, 1, 1)
-    border_radius: [15]
-    canvas.before:
-        Color:
-            rgba: self.back_color
-        RoundedRectangle:
-            size: self.size
-            pos: self.pos
-            radius: [15]

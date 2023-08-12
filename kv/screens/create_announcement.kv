@@ -1,0 +1,22 @@
+<CreateAnnouncement>:
+    name: "Screen9"
+    on_enter: NavBar.goToFakeAnnoucements()
+    canvas:
+        Color:
+            rgba: 1, 0.4, 0.2, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    NavBar:
+        id: NavBar
+        #rgba(238, 250, 248, 1)
+        canvas.after:
+            Color:
+                rgba: (238/255, 250/255, 248/255, 1)
+            Line:
+                width: 1
+                rounded_rectangle: self.x, self.y, self.width, 80, 0, 100
+        FakePrivateChats:
+        FakeGroupChats:
+        FakeAnnouncements:
+        FakeSettings:
