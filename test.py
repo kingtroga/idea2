@@ -1,7 +1,8 @@
 
 from kivymd.app import MDApp
 from py.screens.testScreen import TestScreen
-from py.widgets.navbar import NavBar
+from py.widgets.navbar2 import NavBar2
+from py.widgets.topbar import TopBar
 from py.widgets.fake_private_chats import FakePrivateChats
 from py.widgets.fake_group_chats import FakeGroupChats
 from py.widgets.fake_announcements import FakeAnnouncements
@@ -9,7 +10,8 @@ from py.widgets.fake_settings import FakeSettings
 from kivy.lang import Builder
 
 Builder.load_file("screen.kv")
-Builder.load_file("kv\widgets\\navbar.kv")
+Builder.load_file("kv\widgets\\navbar2.kv")
+Builder.load_file("kv\widgets\\topbar.kv")
 Builder.load_file("kv\widgets\\fake_private_chats.kv")
 Builder.load_file("kv\widgets\\fake_group_chats.kv")
 Builder.load_file("kv\widgets\\fake_announcements.kv")
