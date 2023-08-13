@@ -11,3 +11,7 @@ class NavBar(MDBottomNavigation):
 
     def goToFakeAnnoucements(self):
         self.switch_tab('fake_announcements')
+
+    def goToAppNav(self, app):
+        if app.NAVIGATION != None:
+            self.switch_tab(app.NAVIGATION)

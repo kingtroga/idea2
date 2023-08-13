@@ -1,6 +1,9 @@
 <Home>:
     name: "Screen7"
-    on_enter: private_chats.show_storys_and_chats()
+    on_enter: 
+        private_chats.show_storys_and_chats()
+        self.checkAppNav(app)
+        NavBar.goToAppNav(app)
     canvas:
         Color:
             rgba: 1, 0.4, 0.2, 1
@@ -8,6 +11,7 @@
             size: self.size
             pos: self.pos
     NavBar:
+        id: NavBar
         PrivateChats:
             id: private_chats
         GroupChats:
