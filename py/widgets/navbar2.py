@@ -36,6 +36,10 @@ class NavBar2(MDBottomNavigation):
         app.NAVIGATION = 'announcements'
         app.root.screens[6].ids['NavBar'].goToAppNav(app)
 
+    def setHomeScreenToSettings(self, app):
+        app.NAVIGATION = 'settings'
+        app.root.screens[6].ids['NavBar'].goToAppNav(app)
+
 
     def goToHomeScreen(self, app):
         self.app = app
