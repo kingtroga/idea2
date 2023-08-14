@@ -18,6 +18,7 @@ from py.screens.forgot_password import ForgotPassword
 from py.screens.home import Home
 from py.screens.create_group import CreateGroup
 from py.screens.create_announcement import CreateAnnouncement
+from py.screens.message_screen import MessageScreen
 
 # WIDGETS/PYTHON
 from py.widgets.idealabel1 import IdeaLabel1
@@ -42,6 +43,7 @@ Builder.load_file("kv\screens\\forgot_password.kv")
 Builder.load_file("kv\screens\\home.kv")
 Builder.load_file("kv\screens\create_group.kv")
 Builder.load_file("kv\screens\create_announcement.kv")
+Builder.load_file("kv\screens\message_screen.kv")
 
 
 # WIDGETS/KIVY
