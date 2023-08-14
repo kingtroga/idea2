@@ -16,16 +16,16 @@ class NavBar2(MDBottomNavigation):
     def work(self, dt):
         self.switch_tab('fake_announcements')
 
-    def goToFakeAnnoucements(self):
+    def goToFakeAnnouncements(self):
         self.switch_tab('fake_announcements')
 
-    def goToRealGroupChats(self, app, tab_name):
-        app.NAVIGATION = "group_chats"
-        app.root.current = "Screen7"
+    def goToRealGroupChats(self, dt):
+        self.app.root.current = "Screen7"
 
     def setHomeScreenToGroupChats(self, app):
         app.NAVIGATION = 'group_chats'
         app.root.screens[6].ids['NavBar'].goToAppNav(app)
 
     def goToHomeScreen(self, app):
-        app.root.current = "Screen7"
+        self.app = app
+        Clock.schedule_once(self.goToRealGroupChats, 1)
