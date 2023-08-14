@@ -10,6 +10,12 @@
             pos: self.pos
     NavBar:
         id: NavBar
+        canvas.after:
+            Color:
+                rgba: (238/255, 250/255, 248/255, 1)
+            Line:
+                width: 1
+                rounded_rectangle: self.x, self.y, self.width, 80, 0, 100
         PrivateChats:
             id: private_chats
         GroupChats:
