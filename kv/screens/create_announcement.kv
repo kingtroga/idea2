@@ -18,6 +18,8 @@
                 width: 1
                 rounded_rectangle: self.x, self.y, self.width, 80, 0, 100
         FakePrivateChats:
+            on_tab_press: NavBar2.setHomeScreenToPrivateChats(app)
+            on_tab_release: NavBar2.goToHomeScreen(app)
         FakeGroupChats:
             on_tab_press: NavBar2.setHomeScreenToGroupChats(app)
             on_tab_release: NavBar2.goToHomeScreen(app)

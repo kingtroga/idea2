@@ -19,13 +19,20 @@ class NavBar2(MDBottomNavigation):
     def goToFakeAnnouncements(self):
         self.switch_tab('fake_announcements')
 
-    def goToRealGroupChats(self, dt):
+
+    # FOR A NICE TRANSITION
+    def slowMo(self, dt):
         self.app.root.current = "Screen7"
 
     def setHomeScreenToGroupChats(self, app):
         app.NAVIGATION = 'group_chats'
         app.root.screens[6].ids['NavBar'].goToAppNav(app)
 
+    def setHomeScreenToPrivateChats(self, app):
+        app.NAVIGATION = 'private_chats'
+        app.root.screens[6].ids['NavBar'].goToAppNav(app)
+
+
     def goToHomeScreen(self, app):
         self.app = app
-        Clock.schedule_once(self.goToRealGroupChats, 1)
+        Clock.schedule_once(self.slowMo, 0.7)

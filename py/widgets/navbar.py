@@ -15,3 +15,4 @@ class NavBar(MDBottomNavigation):
     def goToAppNav(self, app):
         if app.NAVIGATION != None:
             self.switch_tab(app.NAVIGATION)
+            app.NAVIGATION = None
