@@ -82,9 +82,17 @@
 
 
 
-                MDIconButton:
-                    icon: "android"
-                    icon_size: "64sp"
+            MDIconButton:
+                icon: "plus"
+                icon_size: "40sp"
+                pos_hint: {'right': 0.97, 'y': 0.02}
+                canvas.after:
+                    Color:
+                        rgb: 59/255, 63/255, 59/255, 1
+                    Line:
+                        width: 1
+                        circle: (self.center_x, self.center_y, min(self.width-2, self.height-2)/2, 0, 360)
+
 
                 
 
