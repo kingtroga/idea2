@@ -86,10 +86,19 @@
                 icon: "plus"
                 icon_size: "40sp"
                 theme_icon_color: "Custom"
-                icon_color: [0, 0, 0, 1]
+                icon_color: [1, 1, 1, 1]
                 pos_hint: {'right': 0.97, 'y': 0.02}
                 line_width: 1
-                line_color:  [0, 0, 0, 1]
+                line_color:  32/255, 160/255, 144/255, 1#(36/255, 120/255, 109/255, 1)
+                md_bg_color: 32/255, 160/255, 144/255, 1#(36/255, 120/255, 109/255, 1)
+                canvas.before:
+                    Color:
+                        rgba: 0,0,0, 0.2
+                    Ellipse:
+                        angle_start: 0
+                        angle_end: 360
+                        pos: self.pos[0] + 3, self.pos[1] - 2
+                        size: self.size
 
                 
 
