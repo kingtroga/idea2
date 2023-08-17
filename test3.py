@@ -59,23 +59,33 @@ Builder.load_string(
 <ContactItem>:
     md_bg_color: 0.5, 0.8, 0.8, 1
     size_hint: 1, .15
+    id: contactItem
+    avatar: 'http://127.0.0.1:8000/media/images/avatars/1/filename.jpg'
+    full_name: "Yekorogha Ayebatariwalate"
+    user_id: "19010301043"
     Button:
-        text: "hello"
+        #text: "hello"
         id: CI
+        background_normal: ""
+        background_active: ""
+        background_down: ''
+        background_color: [1, 1, 1, 1]
+        on_press: self.background_color = (0.5, 0.5, 0.5, 0.2)
+        on_release: self.background_color = (1, 1,1 ,1)
         FitImage:
-            source: 'http://127.0.0.1:8000/media/images/avatars/1/filename.jpg'
+            source: contactItem.avatar
             size: CI.height - 10, CI.height - 10
             radius: [50]
             pos: CI.pos[0] + 10, CI.pos[1] + 5
         MDLabel:
-            text: "Yekorogha Ayebatariwalate"
+            text: contactItem.full_name
             font_name: "fonts/arialmt.ttf"
             font_size: "19dp"
             size_hint_x: None
             width: 500
             pos: CI.pos[0] + 83, CI.pos[1]
         MDLabel:
-            text: "19010301043"
+            text: contactItem.user_id
             font_name: "fonts/Montserrat-Light.ttf"
             font_size: "15dp"
             pos: CI.pos[0] + 85, CI.pos[1] - 20
@@ -90,6 +100,10 @@ Builder.load_string(
 
 
 class ContactItem(MDBoxLayout):
+    avatar = StringProperty()
+    full_name = StringProperty()
+    user_id = StringProperty()
+
     def __init__(self, **kwargs):
         super(ContactItem, self).__init__(**kwargs)
 
