@@ -1,16 +1,138 @@
-import requests
+from kivy.lang import Builder
+from kivy.properties import StringProperty
+from kivy.uix.screenmanager import Screen
 
-access_token = "c310020b3769b40be179be8b60396b161b5c7512"
-logout_url = "http://127.0.0.1:8000/api/account/logout/"
+from kivymd.icon_definitions import md_icons
+from kivymd.app import MDApp
+from kivymd.uix.list import OneLineIconListItem
 
-headers = {
-    "Authorization": f"Bearer {access_token}"
-}
+from kivymd.uix.fitimage import FitImage
+from kivymd.uix.boxlayout import MDBoxLayout
 
-response = requests.post(logout_url, headers=headers)
 
-if response.status_code == 200:
-    print(response.json())
-    print("Logged out successfully")
-else:
-    print("Logout failed with status code:", response.status_code)
+
+ 
+
+Builder.load_string(
+'''
+#:import images_path kivymd.images_path
+
+
+<CustomOneLineIconListItem>
+
+    IconLeftWidget:
+        icon: root.icon
+
+
+<PreviousMDIcons>
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        spacing: dp(10)
+        #padding: dp(20)
+
+        MDBoxLayout:
+            adaptive_height: True
+
+            MDIconButton:
+                icon: 'magnify'
+
+            MDTextField:
+                id: search_field
+                hint_text: 'Search icon'
+                on_text: root.set_list_md_icons(self.text, True)
+
+        RecycleView:
+            id: rv
+            key_viewclass: 'viewclass'
+            key_size: 'height'
+
+            RecycleBoxLayout:
+                padding: dp(10)
+                default_size: None, dp(48)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+        ContactItem:
+
+<ContactItem>:
+    md_bg_color: 0.5, 0.8, 0.8, 1
+    size_hint: 1, .15
+    Button:
+        text: "hello"
+        id: CI
+        FitImage:
+            source: 'http://127.0.0.1:8000/media/images/avatars/1/filename.jpg'
+            size: CI.height - 10, CI.height - 10
+            radius: [50]
+            pos: CI.pos[0] + 10, CI.pos[1] + 5
+        MDLabel:
+            text: "Yekorogha Ayebatariwalate"
+            font_name: "fonts/arialmt.ttf"
+            font_size: "19dp"
+            size_hint_x: None
+            width: 500
+            pos: CI.pos[0] + 83, CI.pos[1]
+        MDLabel:
+            text: "19010301043"
+            font_name: "fonts/Montserrat-Light.ttf"
+            font_size: "15dp"
+            pos: CI.pos[0] + 85, CI.pos[1] - 20
+
+
+
+
+
+
+'''
+)
+
+
+class ContactItem(MDBoxLayout):
+    def __init__(self, **kwargs):
+        super(ContactItem, self).__init__(**kwargs)
+
+class CustomOneLineIconListItem(OneLineIconListItem):
+    icon = StringProperty()
+
+
+class PreviousMDIcons(Screen):
+
+    def set_list_md_icons(self, text="", search=False):
+        '''Builds a list of icons for the screen MDIcons.'''
+
+        def add_icon_item(name_icon):
+            self.ids.rv.data.append(
+                {
+                    "viewclass": "CustomOneLineIconListItem",
+                    "icon": name_icon,
+                    "text": name_icon,
+                    "callback": lambda x: x,
+                }
+            )
+
+        self.ids.rv.data = []
+        for name_icon in md_icons.keys():
+            if search:
+                # IT"S A STRING
+                if text in name_icon:
+                    add_icon_item(name_icon)
+            else:
+                pass
+                #add_icon_item(name_icon)
+
+
+class MainApp(MDApp):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.screen = PreviousMDIcons()
+
+    def build(self):
+        return self.screen
+
+    def on_start(self):
+        self.screen.set_list_md_icons()
+
+
+MainApp().run()

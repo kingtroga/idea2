@@ -2,6 +2,7 @@
     name: 'fake_private_chats'
     text: 'Message'
     icon: 'message-processing-outline'
+    id: fkp
     MDScreen:
         md_bg_color: 0, 14/255, 8/255, 1
         AnchorLayout:
@@ -91,6 +92,7 @@
                 line_width: 1
                 line_color:  32/255, 160/255, 144/255, 1#(36/255, 120/255, 109/255, 1)
                 md_bg_color: 32/255, 160/255, 144/255, 1#(36/255, 120/255, 109/255, 1)
+                on_release: fkp.show_simple_dialog()
                 canvas.before:
                     Color:
                         rgba: 0,0,0, 0.2
@@ -103,3 +105,13 @@
                 
 
 ###########################################################
+<Item>:
+    ImageLeftWidget:
+        source: root.source
+        canvas.after:
+            Rectangle:
+                source: root.source
+                size: self.size
+                pos: self.pos
+                #radius: [50]
+
