@@ -48,8 +48,8 @@ Builder.load_string(
             key_size: 'height'
 
             RecycleBoxLayout:
-                padding: dp(10)
-                default_size: None, dp(48)
+                #padding: dp(10)
+                default_size: None, dp(80)
                 default_size_hint: 1, None
                 size_hint_y: None
                 height: self.minimum_height
@@ -68,10 +68,10 @@ Builder.load_string(
         id: CI
         background_normal: ""
         background_active: ""
-        background_down: ''
-        background_color: [1, 1, 1, 1]
-        on_press: self.background_color = (0.5, 0.5, 0.5, 0.2)
-        on_release: self.background_color = (1, 1,1 ,1)
+        #background_down: ''
+        #background_color: [1, 1, 1, 1]
+        #on_press: self.background_color = (0.5, 0.5, 0.5, 0.2)
+        #on_release: self.background_color = (1, 1,1 ,1)
         FitImage:
             source: contactItem.avatar
             size: CI.height - 10, CI.height - 10
@@ -111,30 +111,37 @@ class CustomOneLineIconListItem(OneLineIconListItem):
     icon = StringProperty()
 
 
+contacts = [
+    # avatar, full_name, user_id
+    ["http://127.0.0.1:8000/media/default/account.png", "Olatubosun John", "19010301047"],
+    ["http://127.0.0.1:8000/media/default/account.png", "Meshe Damilola-Peter", "19010301087"],
+    ["http://127.0.0.1:8000/media/images/avatars/1/filename.jpg", "Yekorogha Tari", "19010301043"]
+]
+
+
 class PreviousMDIcons(Screen):
 
     def set_list_md_icons(self, text="", search=False):
         '''Builds a list of icons for the screen MDIcons.'''
 
-        def add_icon_item(name_icon):
+        def add_contact_item(contact):
             self.ids.rv.data.append(
                 {
-                    "viewclass": "CustomOneLineIconListItem",
-                    "icon": name_icon,
-                    "text": name_icon,
-                    "callback": lambda x: x,
+                    "viewclass": "ContactItem",
+                    "avatar": contact[0],
+                    "full_name": contact[1],
+                    "user_id": contact[2],
                 }
             )
 
         self.ids.rv.data = []
-        for name_icon in md_icons.keys():
+        for contact in contacts:
             if search:
                 # IT"S A STRING
-                if text in name_icon:
-                    add_icon_item(name_icon)
+                if text in contact[2]:
+                    add_contact_item(contact)
             else:
-                pass
-                #add_icon_item(name_icon)
+                add_contact_item(contact)
 
 
 class MainApp(MDApp):
