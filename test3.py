@@ -25,6 +25,15 @@ Builder.load_string(
 
 
 <PreviousMDIcons>
+    canvas.before:
+        PushMatrix:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    canvas.after:
+        PopMatrix:
 
     MDBoxLayout:
         orientation: 'vertical'
@@ -33,6 +42,7 @@ Builder.load_string(
 
         MDBoxLayout:
             adaptive_height: True
+            md_bg_color: 0.6, 0.7, 0.9, 1
 
             MDIconButton:
                 icon: 'magnify'
