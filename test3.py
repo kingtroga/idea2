@@ -8,6 +8,7 @@ from kivymd.uix.list import OneLineIconListItem
 
 from kivymd.uix.fitimage import FitImage
 from kivymd.uix.boxlayout import MDBoxLayout
+from kivy.utils import get_color_from_hex
 
 
 
@@ -25,6 +26,7 @@ Builder.load_string(
 
 
 <PreviousMDIcons>
+    id: coco
     canvas.before:
         PushMatrix:
         Color:
@@ -37,20 +39,65 @@ Builder.load_string(
 
     MDBoxLayout:
         orientation: 'vertical'
-        spacing: dp(10)
+        #spacing: dp(10)
         #padding: dp(20)
 
-        MDBoxLayout:
+        MDFloatLayout:
             adaptive_height: True
-            md_bg_color: 0.6, 0.7, 0.9, 1
+            md_bg_color: 1, 1, 1, 1
+            size_hint: 1, 0.1
+
+            TextInput:
+                pos_hint: {"center_y": 0.5, "center_x": 0.5}
+                on_text: coco.set_list_md_icons(self.text, True)
+                multiline: False
+                background_active: ""
+                background_color: 1, 1, 1, 1
+                background_disabled_normal: ""
+                background_normal: ""
+                cursor_color: 0, 0, 0, 1
+                font_name: "fonts/Montserrat-Light.ttf"
+                font_size: "12dp"
+                hint_text: "Search"
+                hint_text_color: 0, 0, 0, 1
+                color: 0, 0, 0, 1
+                padding: 45, 11.9
+                size_hint_y: None
+                size_hint_x: .97
+                height: 40
+                
+                #size_hint: 1, 
+                canvas.before:
+                    Color:
+                        rgba: get_color_from_hex("F3F6F6")
+                    Line:
+                        width: 1
+                        rounded_rectangle: self.x, self.y, self.width, self.height, 10, 100
+
+                    RoundedRectangle:
+                        radius: [10]
+                        size: self.size
+                        pos: self.pos
+                    Color:
+                        rgba: 0, 0, 0,1 
 
             MDIconButton:
                 icon: 'magnify'
+                icon_color: 0, 0, 0, 1
+                icon_size: '30dp'
+                theme_icon_color: "Custom"
+                pos_hint: {"center_x": 0.07, "center_y": 0.5}
 
-            MDTextField:
-                id: search_field
-                hint_text: 'Search icon'
-                on_text: root.set_list_md_icons(self.text, True)
+            MDIconButton:
+                icon: 'close'
+                icon_color: 0, 0, 0, 1
+                icon_size: '30dp'
+                theme_icon_color: "Custom"
+                pos_hint: {"center_x": 0.94, "center_y": 0.5}
+            
+
+            
+               
 
         RecycleView:
             id: rv
@@ -64,7 +111,7 @@ Builder.load_string(
                 size_hint_y: None
                 height: self.minimum_height
                 orientation: 'vertical'
-        ContactItem:
+
 
 <ContactItem>:
     md_bg_color: 0.5, 0.8, 0.8, 1
