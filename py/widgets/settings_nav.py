@@ -8,7 +8,7 @@ from kivy.utils import get_color_from_hex
 class SettingsNav(MDBottomNavigationItem):
     def __init__(self, **kwargs):
         super(SettingsNav, self).__init__(**kwargs)
-        Clock.schedule_once(self.show_settings, 0.5)
+        #Clock.schedule_once(self.show_settings, 0.5)
 
     def show_settings(self, dt):
         #print("I'm a boy")

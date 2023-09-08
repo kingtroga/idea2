@@ -35,7 +35,7 @@ class PrivateChats(MDBottomNavigationItem):
         #################################################
 
         self.lock = threading.Lock()
-        Clock.schedule_once(self.show_storys_and_chats, 0.5)
+        #Clock.schedule_once(self.show_storys_and_chats, 0.5)
 
 
 
@@ -94,3 +94,7 @@ class PrivateChats(MDBottomNavigationItem):
             kivy_color.append(i/255)
         kivy_color.append(1)
         return kivy_color
+    
+    def changeToContactsPage(self, app):
+        self.app = app
+        self.app.root.current = "Screen11"

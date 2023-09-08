@@ -200,8 +200,8 @@
                     self.parent.parent.parent.handlePress(*args)   
                 on_release:
                     self.parent.parent.parent.handleRelease(*args)
-                    self.parent.parent.parent.manager.current = "Screen7"
-                    #self.parent.parent.parent.handleUserLogin(self, app)
+                    #self.parent.parent.parent.manager.current = "Screen7"
+                    self.parent.parent.parent.handleUserLogin(self, app)
         BoxLayout:
             orientation: "vertical"
             pos_hint: {'center_x': 0.5, 'center_y': 0.07}
