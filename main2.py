@@ -67,6 +67,7 @@ class iDeaApp(MDApp):
         self.theme_cls.material_style = "M3"
         self.theme_cls.theme_style = "Light"
         self.sm = ManagerScreen()
+        self.contacts = None
         self.NAVIGATION = None
         return self.sm
 
