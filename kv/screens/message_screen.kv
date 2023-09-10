@@ -1,2 +1,9 @@
 <MessageScreen>:
     name: "Screen10"
+    on_touch_down: self.manager.current = "Screen11"
+    canvas:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
