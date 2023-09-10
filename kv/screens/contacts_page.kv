@@ -104,8 +104,8 @@
         background_active: ""
         #background_down: ''
         #background_color: [1, 1, 1, 1]
-        #on_press: self.background_color = (0.5, 0.5, 0.5, 0.2)
-        #on_release: self.background_color = (1, 1,1 ,1)
+        on_press: self.parent.changeToMessageScreen(self.parent, app)
+        
         FitImage:
             source: contactItem.avatar
             size: CI.height - 10, CI.height - 10

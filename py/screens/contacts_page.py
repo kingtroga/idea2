@@ -4,7 +4,10 @@ from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.app import MDApp
 import requests
 
+#PYTHON
+from py.widgets.contactitem import ContactItem
 
+#WIDGETS
 
 
 
@@ -43,10 +46,13 @@ class ContactsPage(Screen):
         self.app = app
         self.app.root.current = "Screen7"
 
-class ContactItem(MDBoxLayout):
+""" class ContactItem(MDBoxLayout):
     avatar = StringProperty()
     full_name = StringProperty()
     user_id = StringProperty()
 
     def __init__(self, **kwargs):
         super(ContactItem, self).__init__(**kwargs)
+
+    def changeToMessageScreen(self, contactitem, app):
+        print(contactitem) """
