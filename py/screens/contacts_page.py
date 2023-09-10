@@ -5,12 +5,7 @@ from kivymd.app import MDApp
 import requests
 
 
-contacts = [
-    # avatar, full_name, user_id
-    ["http://127.0.0.1:8000/media/default/account.png", "Olatubosun John", "19010301047"],
-    ["http://127.0.0.1:8000/media/default/account.png", "Meshe Damilola-Peter", "19010301087"],
-    ["http://127.0.0.1:8000/media/images/avatars/1/filename.jpg", "Yekorogha Tari", "19010301043"]
-]
+
 
 
 class ContactsPage(Screen):
