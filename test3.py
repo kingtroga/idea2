@@ -26,7 +26,7 @@ FloatLayout:
         background_color: 1, 1, 1, 1
     TextInput:
         id: messageBox
-        pos_hint: {"center_y": 0.05, "center_x": 0.45}
+        pos_hint: {"center_y": 0.05, "center_x": 0.43}
         #on_text: coco.set_list_md_icons(self.text, True)
         multiline: False
         background_active: ""
@@ -70,7 +70,17 @@ FloatLayout:
         icon_color: get_color_from_hex("000E08")
         icon_size: '30dp'
         theme_icon_color: "Custom"
-        pos: messageBox.width + dp(43), messageBox.pos[1] - dp(5)
+        pos: messageBox.width + dp(37), messageBox.pos[1] - dp(5)
+
+
+    MDIconButton:
+        icon: 'microphone-outline'
+        icon_color: get_color_from_hex("000E08")
+        icon_size: '30dp'
+        theme_icon_color: "Custom"
+        pos: messageBox.width + dp(74), messageBox.pos[1] - dp(5)
+
+    
                     
 
             
