@@ -18,6 +18,7 @@ FloatLayout:
             size: self.size
             pos: self.pos
     Button:
+        id: bottomNav
         size_hint: 1, 0.1
         pos_hint: {'x': 0}
         background_normal: ""
@@ -63,6 +64,13 @@ FloatLayout:
         icon_size: '30dp'
         theme_icon_color: "Custom"
         pos: messageBox.width - dp(5), messageBox.pos[1] - dp(5)
+
+    MDIconButton:
+        icon: 'camera-outline'
+        icon_color: get_color_from_hex("000E08")
+        icon_size: '30dp'
+        theme_icon_color: "Custom"
+        pos: messageBox.width + dp(43), messageBox.pos[1] - dp(5)
                     
 
             
