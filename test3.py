@@ -1,30 +1,85 @@
-import requests
-import json
+from kivymd.app import MDApp
+from kivy.lang import Builder
+from py.widgets.topbar import TopBar
+from kivy.metrics import dp
+from kivy.config import Config
+Config.set('graphics', 'width', '380')
+Config.set('graphics', 'height', '600')
+Config.write()
 
-# Define the URL of the API endpoint
-url = "http://127.0.0.1:8000/api/users/"
+Builder.load_file("kv/widgets/topbar.kv")
 
-# Define your authentication token
-token = "aef8b8ce3fb45cddc7f6ae8825776da3767d1d7d"
+kv = """
+FloatLayout:
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    Button:
+        size_hint: 1, 0.1
+        pos_hint: {'x': 0}
+        background_normal: ""
+        background_down: ''
+        background_color: 1, 1, 1, 1
+    TextInput:
+        id: messageBox
+        pos_hint: {"center_y": 0.05, "center_x": 0.45}
+        #on_text: coco.set_list_md_icons(self.text, True)
+        multiline: False
+        background_active: ""
+        background_color: 1, 1, 1, 1
+        background_disabled_normal: ""
+        background_normal: ""
+        cursor_color: 0, 0, 0, 1
+        font_name: "fonts/Montserrat-Light.ttf"
+        font_size: "12dp"
+        hint_text: "Write Your Message"
+        hint_text_color: get_color_from_hex("797C7B")
+        color: 0, 0, 0, 1
+        padding: 10, 11.9
+        size_hint_y: None
+        size_hint_x: .67
+        height: 40
+        #size_hint: 1, 
+        canvas.before:
+            Color:
+                rgba: get_color_from_hex("F3F6F6")
+            Line:
+                width: 1
+                rounded_rectangle: self.x, self.y, self.width, self.height, 10, 100
 
-# Define headers with the token
-headers = {
-    "Authorization": f"Token {token}"
-}
+            RoundedRectangle:
+                radius: [10]
+                size: self.size
+                pos: self.pos
+            Color:
+                rgba: get_color_from_hex("797C7B")
 
-try:
-    # Send a GET request to the endpoint with the token in headers
-    response = requests.get(url, headers=headers)
+    MDIconButton:
+        icon: 'file-multiple-outline'
+        icon_color: get_color_from_hex("797C7B")
+        icon_size: '30dp'
+        theme_icon_color: "Custom"
+        pos: messageBox.width - dp(5), messageBox.pos[1] - dp(5)
+                    
 
-    # Check if the request was successful (status code 200)
-    if response.status_code == 200:
-        # Parse the JSON data from the response
-        data = response.json()
+            
+            
 
-        # Print the data or process it as needed
-        print(data)
-    else:
-        print(f"Failed to retrieve data. Status Code: {response.status_code}")
+ 
+        
 
-except requests.exceptions.RequestException as e:
-    print(f"An error occurred: {e}")
+            
+
+
+"""
+
+
+class TestApp(MDApp):
+    def build(self):
+        return Builder.load_string(kv)
+
+if __name__ == "__main__":
+    TestApp().run()
