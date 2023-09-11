@@ -59,6 +59,14 @@ FloatLayout:
                 rgba: get_color_from_hex("797C7B")
 
     MDIconButton:
+        icon: 'paperclip'
+        icon_color: get_color_from_hex("000E08")
+        icon_size: '30dp'
+        theme_icon_color: "Custom"
+        pos: messageBox.pos[0] - dp(40), messageBox.pos[1] - dp(5)
+
+
+    MDIconButton:
         icon: 'file-multiple-outline'
         icon_color: get_color_from_hex("797C7B")
         icon_size: '30dp'
