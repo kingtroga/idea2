@@ -6,7 +6,7 @@ from kivy.config import Config
 Config.set('graphics', 'width', '380')
 Config.set('graphics', 'height', '600')
 Config.write()
-
+from kivy.utils import get_color_from_hex
 Builder.load_file("kv/widgets/topbar.kv")
 
 kv = """
@@ -17,6 +17,69 @@ FloatLayout:
         Rectangle:
             size: self.size
             pos: self.pos
+
+    Button:
+        id: TopNav
+        size_hint: 1, 0.1
+        pos_hint: {'x': 0, "top": 1}
+        background_normal: ""
+        background_down: ''
+        background_color: 1, 1, 1, 1
+        canvas.after:
+            Color:
+                rgba: (238/255, 250/255, 248/255, 1)
+            Line:
+                width: 1
+                rounded_rectangle: self.x, self.y, self.width, 60, 0, 100
+
+        MDLabel:
+            text: "Janet Doe"
+            font_size: dp(20)
+            color: 0, 0, 0, 1
+            pos_hint: {"center_x": 0.78, "center_y": 0.965}
+            bold: True
+            font_name: "fonts/arialmt.ttf"
+            pos: self.parent.pos[0] + dp(110), self.parent.pos[1] - dp(11)
+
+        MDLabel:
+            text: "Active Now"
+            font_size: dp(15)
+            color: get_color_from_hex("797C7B")
+            pos_hint: {"center_x": 0.78, "center_y": 0.92}
+            bold: True
+            font_name: "fonts/Montserrat-Light.ttf"
+            pos: self.parent.pos[0] + dp(110), self.parent.pos[1] - dp(33)
+
+    MDIconButton:
+        icon: 'arrow-left'
+        icon_color: get_color_from_hex("000E08")
+        icon_size: '18dp'
+        theme_icon_color: "Custom"
+        pos: TopNav.pos[0], TopNav.pos[1] + dp(8)
+
+    
+    MDIconButton:
+        icon: 'images/4.jpg'
+        icon_size: '27dp'
+        theme_icon_color: "Custom"
+        pos: TopNav.pos[0] + dp(45), TopNav.pos[1] + dp(2.5)
+        canvas:
+            Color: 
+                rgb: 1, 1, 1, 1
+            RoundedRectangle:
+                source: self.icon
+                size: self.size
+                pos: self.pos
+                radius: [50]
+
+    
+        
+
+
+
+
+
+
     Button:
         id: bottomNav
         size_hint: 1, 0.1
@@ -24,6 +87,12 @@ FloatLayout:
         background_normal: ""
         background_down: ''
         background_color: 1, 1, 1, 1
+        canvas.after:
+            Color:
+                rgba: (238/255, 250/255, 248/255, 1)
+            Line:
+                width: 1
+                rounded_rectangle: self.x, self.y, self.width, 60, 0, 100
     TextInput:
         id: messageBox
         pos_hint: {"center_y": 0.05, "center_x": 0.43}
