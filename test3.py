@@ -7,7 +7,10 @@ Config.set('graphics', 'width', '380')
 Config.set('graphics', 'height', '600')
 Config.write()
 from kivy.utils import get_color_from_hex
-Builder.load_file("kv/widgets/topbar.kv")
+
+from py.widgets.messagebox import MessageBox
+Builder.load_file("kv/widgets/messagebox.kv")
+
 
 kv = """
 FloatLayout:
@@ -30,7 +33,7 @@ FloatLayout:
                 rgba: (238/255, 250/255, 248/255, 1)
             Line:
                 width: 1
-                rounded_rectangle: self.x, self.y, self.width, 60, 0, 100
+                rounded_rectangle: self.x, self.y, self.width, self.height, 0, 100
 
         MDLabel:
             text: "Janet Doe"
@@ -87,7 +90,15 @@ FloatLayout:
         pos: TopNav.width - dp(60), TopNav.pos[1] + dp(2.5)
 
     
+    MDFloatLayout:
+        size_hint: 1, 0.8
+        md_bg_color: 1, 1, 1, 1
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
         
+
+
+
 
 
 
@@ -106,40 +117,10 @@ FloatLayout:
                 rgba: (238/255, 250/255, 248/255, 1)
             Line:
                 width: 1
-                rounded_rectangle: self.x, self.y, self.width, 60, 0, 100
-    TextInput:
+                rounded_rectangle: self.x, self.y, self.width, self.height, 0, 100
+    
+    MessageBox:
         id: messageBox
-        pos_hint: {"center_y": 0.05, "center_x": 0.43}
-        #on_text: coco.set_list_md_icons(self.text, True)
-        multiline: False
-        background_active: ""
-        background_color: 1, 1, 1, 1
-        background_disabled_normal: ""
-        background_normal: ""
-        cursor_color: 0, 0, 0, 1
-        font_name: "fonts/Montserrat-Light.ttf"
-        font_size: "12dp"
-        hint_text: "Write Your Message"
-        hint_text_color: get_color_from_hex("797C7B")
-        color: 0, 0, 0, 1
-        padding: 10, 11.9
-        size_hint_y: None
-        size_hint_x: .67
-        height: 40
-        #size_hint: 1, 
-        canvas.before:
-            Color:
-                rgba: get_color_from_hex("F3F6F6")
-            Line:
-                width: 1
-                rounded_rectangle: self.x, self.y, self.width, self.height, 10, 100
-
-            RoundedRectangle:
-                radius: [10]
-                size: self.size
-                pos: self.pos
-            Color:
-                rgba: get_color_from_hex("797C7B")
 
     MDIconButton:
         icon: 'paperclip'
