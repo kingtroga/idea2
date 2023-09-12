@@ -72,6 +72,20 @@ FloatLayout:
                 pos: self.pos
                 radius: [50]
 
+    MDIconButton:
+        icon: 'phone-outline'
+        icon_color: get_color_from_hex("000E08")
+        icon_size: '30dp'
+        theme_icon_color: "Custom"
+        pos: TopNav.width - dp(110), TopNav.pos[1] + dp(2.5)
+
+    MDIconButton:
+        icon: 'video-outline'
+        icon_color: get_color_from_hex("000E08")
+        icon_size: '30dp'
+        theme_icon_color: "Custom"
+        pos: TopNav.width - dp(60), TopNav.pos[1] + dp(2.5)
+
     
         
 
