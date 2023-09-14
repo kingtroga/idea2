@@ -3,13 +3,16 @@ from kivy.lang import Builder
 from py.widgets.topbar import TopBar
 from kivy.metrics import dp
 from kivy.config import Config
+from kivy.clock import Clock
 Config.set('graphics', 'width', '380')
 Config.set('graphics', 'height', '600')
 Config.write()
 from kivy.utils import get_color_from_hex
 
 from py.widgets.messagebox import MessageBox
+from py.widgets.chatitem import ChatItem
 Builder.load_file("kv/widgets/messagebox.kv")
+Builder.load_file("kv/widgets/chatitem.kv")
 
 
 kv = """
@@ -101,10 +104,31 @@ FloatLayout:
         pos: TopNav.width - dp(60), TopNav.pos[1] + dp(2.5)
 
     
-    MDFloatLayout:
-        size_hint: 1, 0.8
-        md_bg_color: 1, 1, 1, 1
-        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    
+
+
+
+
+
+
+
+    MDBoxLayout:
+        md_bg_color: 1, 1, 0.7, 1
+        orientation: "vertical"
+        size_hint: 1, .8
+        pos_hint: {"center_x": .5, "center_y": 0.5}
+        #radius: [40,40, 0, 0]
+        RecycleView:
+            id: rv
+            viewclass: 'ChatItem'
+            size_hint_y: 7
+            RecycleBoxLayout:
+                default_size: None, 100
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+        
 
         
 
@@ -181,6 +205,10 @@ FloatLayout:
 class TestApp(MDApp):
     def build(self):
         return Builder.load_string(kv)
+    
+    
+    
+       
 
 if __name__ == "__main__":
     TestApp().run()
