@@ -68,12 +68,23 @@ FloatLayout:
         pos: TopNav.pos[0] + dp(45), TopNav.pos[1] + dp(2.5)
         canvas:
             Color: 
-                rgb: 1, 1, 1, 1
+                rgba: 1, 1, 1, 1
             RoundedRectangle:
                 source: self.icon
                 size: self.size
                 pos: self.pos
                 radius: [50]
+            PushMatrix:
+            Color:
+                rgba: get_color_from_hex("2BEF83")
+            Ellipse:
+                angle_start: 0
+                angle_end: 360
+                size: 10, 10
+                pos: self.pos[0] + dp(36), self.pos[1]
+            PopMatrix:
+
+        
 
     MDIconButton:
         icon: 'phone-outline'
