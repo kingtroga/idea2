@@ -1,3 +1,15 @@
 MDBoxLayout:
-    md_bg_color: 0, 0, 0, 1
-    
+    md_bg_color: 1, 1, 0.9, 1
+    MDLabel:
+        text: "Ayebatariwalate Yekorogha"
+        font_size: "15dp"
+        font_name: "fonts/Montserrat-Light.ttf"
+        size_hint: None, 0.05
+        width: app.caculate_width(self)
+        halign: "center"
+        canvas.before: 
+            Color:
+                rgba: 0.7, 1, 0.5, 1
+            Rectangle: 
+                size: self.size
+                pos: self.pos
