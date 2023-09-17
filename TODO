@@ -1,0 +1,2 @@
+MAKE login and sign_up stop saving states it's fucking up the sequence of the app
+ADJUST THE USER INFORMATION FOR THE PrivateChats CreateAnnouncement TRANSITION

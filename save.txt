@@ -1,0 +1,114 @@
+ChatItem:
+                id: coco
+                avatar: 'images/4.jpg'
+                uppertext: "Janet Doe"
+                icon_size: "45dp"
+                lowertext: "Who am I?"
+                
+                bold: True
+                text_icon_dis: 94
+                uppertextY: 4
+                lowertextY: 20
+                pos: settingsLayout.width - settingsLayout.width + 20, settingsLayout.height - 110
+                back_color: get_color_from_hex("FFFFFF")
+                font_fam1: "fonts/ARIALMTMEDIUM.TTF"
+                
+            ChatItem:
+                icon2: 'key-outline'
+                #avatar2: 'key.png'
+                uppertext: "Account"
+                lowertext: "Privacy, security, change number"
+                
+                
+                #bold: True
+                text_icon_dis: 94
+                uppertextY: 4
+                lowertextY: 20
+                pos: settingsLayout.width - settingsLayout.width + 30, settingsLayout.height - 210
+                back_color: get_color_from_hex('FFFFFF')
+                font_fam1: "fonts/arialmt.TTF"
+                uppertext_size: "18dp"
+                lowertext_size: "15dp"
+                text_icon_dis: 77
+            ChatItem:
+                icon2: 'message-processing-outline'
+                #avatar2: 'key.png'
+                uppertext: "Chat"
+                lowertext: "Chat history,theme,wallpapers"
+            
+                #bold: True
+                text_icon_dis: 94
+                uppertextY: 4
+                lowertextY: 20
+                pos: settingsLayout.width - settingsLayout.width + 30, settingsLayout.height - 290
+                back_color: get_color_from_hex('FFFFFF')
+                font_fam1: "fonts/arialmt.TTF"
+                uppertext_size: "18dp"
+                lowertext_size: "15dp"
+                text_icon_dis: 77
+            ChatItem:
+                icon2: 'bell-outline'
+                #avatar2: 'key.png'
+                uppertext: "Notifications"
+                lowertext: "Messages, groups and others"
+            
+                #bold: True
+                text_icon_dis: 94
+                uppertextY: 4
+                lowertextY: 20
+                pos: settingsLayout.width - settingsLayout.width + 30, settingsLayout.height - 380
+                back_color:get_color_from_hex('FFFFFF')
+                font_fam1: "fonts/arialmt.TTF"
+                uppertext_size: "18dp"
+                lowertext_size: "15dp"
+                text_icon_dis: 77
+            ChatItem:
+                icon2: 'help-circle-outline'
+                #avatar2: 'key.png'
+                uppertext: "Help"
+                lowertext: "Help center,contact us,privacy policy"
+            
+                #bold: True
+                text_icon_dis: 94
+                uppertextY: 4
+                lowertextY: 20
+                pos: settingsLayout.width - settingsLayout.width + 30, settingsLayout.height - 470
+                back_color:get_color_from_hex('FFFFFF')
+                font_fam1: "fonts/arialmt.TTF"
+                uppertext_size: "18dp"
+                lowertext_size: "15dp"
+                text_icon_dis: 77
+            ChatItem:
+                icon2: 'swap-vertical'
+                #avatar2: 'key.png'
+                uppertext: "Storage and data"
+                lowertext: "Network usage, storage usage"
+            
+                #bold: True
+                text_icon_dis: 94
+                uppertextY: 4
+                lowertextY: 20
+                pos: settingsLayout.width - settingsLayout.width + 30, settingsLayout.height - 560
+                back_color: get_color_from_hex('FFFFFF')
+                font_fam1: "fonts/arialmt.TTF"
+                uppertext_size: "18dp"
+                lowertext_size: "15dp"
+                text_icon_dis: 77
+            ChatItem:
+                icon2: 'account-multiple-outline'
+                #avatar2: 'key.png'
+                uppertext: "Invite a friend"
+                lowertext: ""
+            
+                #bold: True
+                text_icon_dis: 94
+                uppertextY: -7.4
+                lowertextY: 20
+                pos: settingsLayout.width - settingsLayout.width + 30, settingsLayout.height - 640
+                back_color: get_color_from_hex('FFFFFF')
+                font_fam1: "fonts/arialmt.TTF"
+                uppertext_size: "18dp"
+                lowertext_size: "15dp"
+                text_icon_dis: 77
+
+            
