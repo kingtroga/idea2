@@ -1,0 +1,17 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+<MessageItem>:
+    text: self.atext
+    color: get_color_from_hex("FFFFFF")
+    font_size: "15dp"
+    font_name: "fonts/Montserrat-Light.ttf"
+    size_hint: self.caculate_width(self), self.caculate_height(self)
+    #pos_hint: { "center_y": 0.1, "right": 0.97}
+    halign: "center"
+    opacity: 1
+    canvas.before: 
+        Color:
+            rgba: get_color_from_hex("20A090")
+        RoundedRectangle: 
+            size: self.size[0]+ 10, self.size[1] - 20
+            pos: self.pos[0] - 5, self.pos[1] + 8
+            radius: [10, 0, 10, 10]

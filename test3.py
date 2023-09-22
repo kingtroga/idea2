@@ -11,18 +11,23 @@ from kivy.utils import get_color_from_hex
 
 from py.widgets.messagebox import MessageBox
 from py.widgets.chatitem import ChatItem
+from py.widgets.messageitem import MessageItem
 Builder.load_file("kv/widgets/messagebox.kv")
 Builder.load_file("kv/widgets/chatitem.kv")
+from kivy.core.window import Window
 
 
 kv = """
 FloatLayout:
     canvas.before:
         Color:
-            rgba: 0, 0, 0, 1
+            rgba: 1, 1, 1, 1
         Rectangle:
             size: self.size
             pos: self.pos
+
+
+    
 
     Button:
         id: TopNav
@@ -103,6 +108,9 @@ FloatLayout:
         theme_icon_color: "Custom"
         pos: TopNav.width - dp(60), TopNav.pos[1] + dp(2.5)
 
+
+
+
     
     
 
@@ -112,22 +120,7 @@ FloatLayout:
 
 
 
-    MDBoxLayout:
-        md_bg_color: 1, 1, 0.7, 1
-        orientation: "vertical"
-        size_hint: 1, .8
-        pos_hint: {"center_x": .5, "center_y": 0.5}
-        #radius: [40,40, 0, 0]
-        RecycleView:
-            id: rv
-            viewclass: 'ChatItem'
-            size_hint_y: 7
-            RecycleBoxLayout:
-                default_size: None, 100
-                default_size_hint: 1, None
-                size_hint_y: None
-                height: self.minimum_height
-                orientation: 'vertical'
+   
         
 
         
@@ -156,6 +149,7 @@ FloatLayout:
     
     MessageBox:
         id: messageBox
+        on_text_validate: self.printMessage()
 
     MDIconButton:
         icon: 'paperclip'
@@ -187,6 +181,27 @@ FloatLayout:
         theme_icon_color: "Custom"
         pos: messageBox.width + dp(74), messageBox.pos[1] - dp(5)
 
+
+    MDFloatLayout:
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        size_hint: 1, 0.795
+        md_bg_color: 1, 0.7, 0.7, 1
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            size_hint: 1, None
+            size: self.parent.width, self.parent.height
+            pos: self.parent.pos[0], self.parent.pos[1]
+            MDFloatLayout:
+                md_bg_color: 0.7, 1, 0.7, 1
+                id: aBox
+                size_hint_y: None
+                size_hint_x: 1
+                height: 1400
+
+
+
+
     
                     
 
@@ -205,6 +220,9 @@ FloatLayout:
 class TestApp(MDApp):
     def build(self):
         return Builder.load_string(kv)
+    
+    
+
     
     
     

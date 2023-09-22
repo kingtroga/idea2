@@ -1,39 +1,6 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
 MDFloatLayout:
-    md_bg_color: 1, 1, 0.9, 1
-    MDLabel:
-        text: "Ayebatariwalate Yekorogha is a boy!!!!!!!!!!!!!!!!!!!"
-        font_size: "15dp"
-        font_name: "fonts/Montserrat-Light.ttf"
-        size_hint: app.caculate_width(self), app.caculate_height(self)
-        #size_hint: None, None
-        pos_hint: { "center_y": 0.1, "right": 0.97}
-        #x:self.parent.width - ( 1.5 * self.width)
-        #width: "68dp"#app.caculate_width(self)
-        #height: "54dp"
-        halign: "center"
-        opacity: 1
-        canvas.before: 
-            Color:
-                rgba: 0.7, 1, 0.5, 1
-            RoundedRectangle: 
-                size: self.size[0]+ 10, self.size[1] - 20
-                pos: self.pos[0] - 5, self.pos[1] + 10
-                radius: [10, 0, 10, 10]
-    MDLabel:
-        text: "yoghurt"
-        font_size: "15dp"
-        font_name: "fonts/Montserrat-Light.ttf"
-        size_hint: 0.17, 0.08
-        pos_hint: { "center_y": 0.18, "right": 0.97}
-        #x: self.parent.width - ( 1.5 * self.width)
-        #width: app.caculate_width(self)
-        height: "60dp"
-        halign: "center"
-        opacity: 1
-        canvas.before: 
-            Color:
-                rgba: 0.7, 1, 0.5, 1
-            RoundedRectangle: 
-                size: self.size[0]+ 10, self.size[1] - 20
-                pos: self.pos[0] - 5, self.pos[1] + 10
-                radius: [10, 0, 10, 10]
+    md_bg_color: 1, 1, 1, 1
+    MessageItem:
+        text: "Ayebatariwalate Yekorogha"
+        pos_hint: {"center_y": 0.5, "center_x": 0.5}
