@@ -45,11 +45,13 @@ FloatLayout:
                 rounded_rectangle: self.x, self.y, self.width, self.height, 0, 100
 
         MDLabel:
-            text: "Janet Doe"
+            text: "Yekorogha A"
             font_size: dp(20)
             color: 0, 0, 0, 1
-            pos_hint: {"center_x": 0.78, "center_y": 0.965}
+            #pos_hint: {"center_x": 0.78, "center_y": 0.965}
             bold: True
+            size_hint: None, None
+            width: 500
             font_name: "fonts/arialmt.ttf"
             pos: self.parent.pos[0] + dp(110), self.parent.pos[1] - dp(11)
 
@@ -71,27 +73,17 @@ FloatLayout:
 
     
     MDIconButton:
-        icon: 'images/4.jpg'
-        icon_size: '27dp'
+        icon: 'account'
+        icon_size: '35dp'
         theme_icon_color: "Custom"
         pos: TopNav.pos[0] + dp(45), TopNav.pos[1] + dp(2.5)
-        canvas:
-            Color: 
-                rgba: 1, 1, 1, 1
-            RoundedRectangle:
-                source: self.icon
-                size: self.size
-                pos: self.pos
-                radius: [50]
-            PushMatrix:
+        icon_color: 0, 0, 0, 1
+        canvas.before:
             Color:
-                rgba: get_color_from_hex("2BEF83")
-            Ellipse:
-                angle_start: 0
-                angle_end: 360
-                size: 10, 10
-                pos: self.pos[0] + dp(36), self.pos[1]
-            PopMatrix:
+                rgba: (0, 0, 0, 1)
+            Line:
+                width: 1
+                ellipse: self.pos[0] + 5, self.pos[1] + 3, self.size[0] - 10, self.size[1] - 10
 
         
 

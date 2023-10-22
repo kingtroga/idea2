@@ -12,6 +12,7 @@ Builder.load_file('kv\widgets\messageitem.kv')
 import websocket
 import json
 import threading
+from kivymd.app import MDApp
 
 
 
@@ -64,11 +65,14 @@ class MessageBox(TextInput):
         self.counter = 1
         self.outmessage = []
         self.inmessage = []
+        self.message = None
         self.startM = 0
-        #Clock.schedule_interval(self.outMessage, 3)
+        self.app = MDApp.get_running_app()
+        self.max_characters = 35 # Set the maximum number of characters
+
+    def handle_chatting(self):
         rm_thread = threading.Thread(target=self.remove_loading, daemon=True)
         rm_thread.start()
-        self.max_characters = 35 # Set the maximum number of characters
 
     def insert_text(self, substring, from_undo=False):
         # Check if adding the new text will exceed the character limit
@@ -94,10 +98,10 @@ class MessageBox(TextInput):
         self.parent.children[0].children[0].children[0].add_widget(self.msg)
 
         # send the message to everyone in the group
-        self.wsapp.send(json.dumps({
+        self.app.wsapp.send(json.dumps({
             'type': 'chat_message',
             'message': str(self.text),
-            'user_id': 19010301047,
+            'user_id': int(self.app.userID),
         }))
         
         # RESET THE MESSAGE BOX
@@ -150,40 +154,39 @@ class MessageBox(TextInput):
             self.counter = round((self.counter - 0.016),2)
     
     def remove_loading(self):
-        self.wsapp = websocket.WebSocketApp(
+        self.app.wsapp = websocket.WebSocketApp(
             "ws://" +
             "127.0.0.1:8000" +
             "/ws/chat/" +
-            "19010301043_19010301047"+
-            "/19010301047/", 
+            self.getRoom() +
+            "/" +
+            str(self.app.userID) +
+            "/", 
             on_message=self.on_message,
             on_open=self.on_open,
             on_close=self.on_close)
-        self.wsapp.run_forever()
+        self.app.wsapp.run_forever()
+
+    def getRoom(self):
+        room = ""
+        contactID = int(self.app.contactUserID)
+        userID = int(self.app.userID)
+        maxID = max(contactID, userID)
+        minID = min(contactID, userID)
+        room = f"{minID}_{maxID}"
+        return room
 
     def on_message(self,wsapp, message):
         print(json.loads(message))
         data = json.loads(message)
-        if self.startM != 10:
-            if int(data['user_id']) == 19010301043:
-                self.outmessage.append(str(data['message']))
-                Clock.schedule_once(self.outMessage2, 0.2)
-                self.startM = self.startM + 1
-            if int(data['user_id']) == 19010301047:
-                self.inmessage.append(str(data['message']))
-                Clock.schedule_once(self.inMessage2, 0.2)
-                self.startM = self.startM + 1
-        else:
-            if int(data['user_id']) == 19010301043:
-                self.message = str(data['message'])
-                Clock.schedule_once(self.outMessage2, 0.2)
+        if int(data['user_id']) == int(self.app.contactUserID):
+            self.message = str(data['message'])
+            Clock.schedule_once(self.outMessage, 0.2)
 
 
 
     def on_open(self, wsapp):
-        self.wsapp.send(json.dumps({
-            'type': 'fetch_message',
-        }))
+        pass
 
     def on_close(self, wsapp,close_status_code, close_msg):
         print(close_status_code, close_msg)

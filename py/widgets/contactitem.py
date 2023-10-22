@@ -1,6 +1,10 @@
 from kivy.properties import StringProperty
 from kivymd.uix.boxlayout import MDBoxLayout
-
+import websocket
+import threading
+from kivy.clock import Clock
+import json
+from py.widgets.messagebox import MessageItem
 
 class ContactItem(MDBoxLayout):
     avatar = StringProperty()
@@ -14,4 +18,6 @@ class ContactItem(MDBoxLayout):
         print(contactitem.user_id)
         print(contactitem.full_name)
         self.app = app
-        #app.root.current = "Screen10"
+        self.app.contactUserID = contactitem.user_id
+        self.app.contactFullName = contactitem.full_name
+        app.root.current = "Screen10"

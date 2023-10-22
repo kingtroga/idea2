@@ -70,6 +70,10 @@ class iDeaApp(MDApp):
         self.sm = ManagerScreen()
         self.contacts = None
         self.NAVIGATION = None
+        self.contactUserID = None
+        self.contactFullName = None
+        self.userID = None
+        self.wsapp = None
         return self.sm
 
     def on_stop(self):

@@ -98,7 +98,7 @@ class LoginIn(Screen):
     def extractUserInput(self):
         userID = self.ids['login_text_input1'].text
         password = self.ids['login_text_input2'].text
-        print(userID, password)
+        self.app.userID = userID
         return userID, password
     
     def loginUser(self, user_id, password):
@@ -141,7 +141,6 @@ class LoginIn(Screen):
         if response != None:
             if response.status == 200:
                 self.app.ACCESS_TOKEN = result['access']
-                print(self.app.ACCESS_TOKEN)
                 loginBtn = MDFlatButton(
                         text="CONTINUE", #TODO
                         theme_text_color="Custom",
