@@ -10,8 +10,8 @@
     opacity: 1
     canvas.before: 
         Color:
-            rgba: get_color_from_hex("20A090")
+            rgba: self.bcolor
         RoundedRectangle: 
             size: self.size[0]+ 10, self.size[1] - 20
             pos: self.pos[0] - 5, self.pos[1] + 8
-            radius: [10, 0, 10, 10]
+            radius: [self.rradius1, self.rradius2, 10, 10]

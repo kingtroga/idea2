@@ -14,10 +14,10 @@ class Home(Screen):
         self.app = MDApp.get_running_app()
 
         # GET ALL USERS IN THE SYSTEM
-        url = "http://127.0.0.1:8000/api/users/"
+        url = "http://127.0.0.1:8000/api/account/users/"
         token = self.app.ACCESS_TOKEN
         headers = {
-            "Authorization": f"Token {token}"
+            'Authorization': f'Bearer {token}'
         }
 
         #MAKE API CALL

@@ -46,19 +46,18 @@
                 md_bg_color: 0, 14/255, 8/255, 1
 
             MDIconButton:
-                icon: 'images/4.jpg'
+                icon: 'account'
                 icon_size: '30dp'
                 theme_icon_color: "Custom"
                 pos_hint: {'right': 0.98, 'top': 0.99}
+                icon_color: 1, 1, 1, 1
+                canvas.before:
+                    Color:
+                        rgba: (1, 1, 1, 1)
+                    Line:
+                        width: 1
+                        ellipse: self.pos[0], self.pos[1], self.size[0], self.size[1]
                 
-                canvas:
-                    Color: 
-                        rgb: 1, 1, 1, 1
-                    RoundedRectangle:
-                        source: self.icon
-                        size: self.size
-                        pos: self.pos
-                        radius: [50]
 
 ##############STORIES#################################
             ScrollView:
@@ -126,12 +125,13 @@
 ###########################################################
         MDLabel:
             id: loading
-            text: "Loading..."
-            font_size: "36dp"
+            font_name: "fonts/Montserrat-Light.ttf"
+            text: "Click on the '+' below to start chatting"
+            font_size: "25dp"
             halign: "center"
             valign: "center"
-            color: 0, 0, 0, 1
-            opacity: 1
+            color: 121/255, 124/255, 123/255, 1
+           
 
         
 

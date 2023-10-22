@@ -15,6 +15,7 @@ from py.widgets.messageitem import MessageItem
 Builder.load_file("kv/widgets/messagebox.kv")
 Builder.load_file("kv/widgets/chatitem.kv")
 from kivy.core.window import Window
+import websocket
 
 
 kv = """
@@ -185,7 +186,7 @@ FloatLayout:
     MDFloatLayout:
         pos_hint: {"center_x": 0.5, "center_y": 0.5}
         size_hint: 1, 0.795
-        md_bg_color: 1, 0.7, 0.7, 1
+        md_bg_color: 1, 1, 1, 1
         ScrollView:
             do_scroll_x: False
             do_scroll_y: True
@@ -193,7 +194,7 @@ FloatLayout:
             size: self.parent.width, self.parent.height
             pos: self.parent.pos[0], self.parent.pos[1]
             MDFloatLayout:
-                md_bg_color: 0.7, 1, 0.7, 1
+                md_bg_color: 1, 1, 1, 1
                 id: aBox
                 size_hint_y: None
                 size_hint_x: 1

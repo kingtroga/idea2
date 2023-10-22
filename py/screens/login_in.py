@@ -98,6 +98,7 @@ class LoginIn(Screen):
     def extractUserInput(self):
         userID = self.ids['login_text_input1'].text
         password = self.ids['login_text_input2'].text
+        print(userID, password)
         return userID, password
     
     def loginUser(self, user_id, password):
@@ -116,39 +117,60 @@ class LoginIn(Screen):
     async def loginUserAPICall(self, user_id, password):
         login_url = "http://127.0.0.1:8000/api/account/login/"
         async with aiohttp.ClientSession() as session:
-            response = await session.post(
-                headers={'Accept': 'application/json'},
-                url=login_url,
-                data = {
-                    "username": user_id,
-                    "email": "",
-                    "password": password,
-                }
-            )
-            result = await response.json()
-            raw_response = response
-            return result, raw_response
+            try:
+                response = await session.post(
+                    headers={'Accept': 'application/json'},
+                    url=login_url,
+                    data = {
+                        "username": user_id,
+                        "email": "",
+                        "password": password,
+                    }
+                )
+                result = await response.json()
+                raw_response = response
+                return result, raw_response
+            except aiohttp.ClientConnectionError:
+                result, raw_response= None, None
+                return result, raw_response
+
         
     def show_alert_dialog(self, result, response):
         #print("result: ", result)
         #print("response: ", response)
-        if response.status == 200:
-            self.app.ACCESS_TOKEN = result['key']
-            print(self.app.ACCESS_TOKEN)
-            loginBtn = MDFlatButton(
-                    text="CONTINUE", #TODO
-                    theme_text_color="Custom",
-                    text_color=(36/255, 120/255, 109/255, 1),
+        if response != None:
+            if response.status == 200:
+                self.app.ACCESS_TOKEN = result['access']
+                print(self.app.ACCESS_TOKEN)
+                loginBtn = MDFlatButton(
+                        text="CONTINUE", #TODO
+                        theme_text_color="Custom",
+                        text_color=(36/255, 120/255, 109/255, 1),
+                        )
+                loginBtn.bind(on_release=self.changeScreenToHomeScreen) 
+                if not self.dialog:
+                    self.dialog = MDDialog(
+                    title= "Log In Successful",
+                    buttons= [loginBtn]
                     )
-            loginBtn.bind(on_release=self.changeScreenToHomeScreen) 
-            if not self.dialog:
-                self.dialog = MDDialog(
-                title= "Log In Successful",
-                buttons= [loginBtn]
-                )
-            self.dialog.open()
-        elif response.status == 400:
-            loginErrorMsg = str(result['non_field_errors'][0])
+                self.dialog.open()
+            if response.status == 400:
+                loginErrorMsg = str(result['non_field_errors'][0])
+                print(loginErrorMsg)
+                tryAgainBtn = MDFlatButton(
+                        text="Try Again", 
+                        theme_text_color="Custom",
+                        text_color=(36/255, 120/255, 109/255, 1),
+                        )
+                tryAgainBtn.bind(on_release=self.refresh_screen) 
+                if not self.dialog:
+                    self.dialog = MDDialog(
+                    title= loginErrorMsg,
+                    buttons= [tryAgainBtn]
+                    )
+                self.dialog.open()
+        elif response == None:
+            loginErrorMsg = "Sorry, something is wrong with the server. Please try again later"
             print(loginErrorMsg)
             tryAgainBtn = MDFlatButton(
                     text="Try Again", 
@@ -162,9 +184,11 @@ class LoginIn(Screen):
                 buttons= [tryAgainBtn]
                 )
             self.dialog.open()
+
         
     def refresh_screen(self, button):
         self.dialog.dismiss()
+        self.dialog = None
         
     def changeScreenToHomeScreen(self, button):
         self.manager.current = "Screen7"

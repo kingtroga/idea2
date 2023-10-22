@@ -11,6 +11,7 @@ class ContactItem(MDBoxLayout):
         super(ContactItem, self).__init__(**kwargs)
 
     def changeToMessageScreen(self, contactitem, app):
-        #print(contactitem.user_id)
+        print(contactitem.user_id)
+        print(contactitem.full_name)
         self.app = app
-        app.root.current = "Screen10"
+        #app.root.current = "Screen10"

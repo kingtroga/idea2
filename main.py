@@ -5,6 +5,7 @@ Config.write()
 
 from kivymd.app import MDApp
 from kivy.lang import Builder
+import requests
 
 
 # SCREENS/PYTHON

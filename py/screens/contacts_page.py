@@ -23,13 +23,13 @@ class ContactsPage(Screen):
         '''Builds a list of icons for the screen MDIcons.'''
 
         def add_contact_item(contact):
-            avatar_url = lambda contact: contact['avatar'] if contact['avatar'] is not None else "http://127.0.0.1:8000/media/default/account.png"
+            avatar_url = "http://127.0.0.1:8000/media/default/account.png"
             self.ids.rv.data.append(
                 {
                     "viewclass": "ContactItem",
-                    "avatar": avatar_url(contact),
-                    "full_name": contact['fullName'],
-                    "user_id": str(contact['userID']),
+                    "avatar": avatar_url,
+                    "full_name": contact['full_name'],
+                    "user_id": str(contact['user_id']),
                 }
             )
 
@@ -37,7 +37,7 @@ class ContactsPage(Screen):
         for contact in self.app.contacts:
             if search:
                 # IT"S A STRING
-                if text in str(contact['userID']):
+                if text in str(contact['user_id']) or text in str(contact['full_name']):
                     add_contact_item(contact)
             else:
                 add_contact_item(contact)

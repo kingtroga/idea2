@@ -127,7 +127,21 @@ class SignUp(Screen):
     # HANDLE USER REGISTRATION
     def handleUserRegistration(self, *args):
         full_name, user_id, password, password2 = self.extractUserInput()
-        self.registerUser(full_name, user_id, password, password2)
+        if full_name != "" and user_id != "" and password != "" and password2 != "":
+            self.registerUser(full_name, user_id, password, password2)
+        else:
+            tryAgainBtn = MDFlatButton(
+                        text="Try Again", 
+                        theme_text_color="Custom",
+                        text_color=(36/255, 120/255, 109/255, 1),
+                        )
+            tryAgainBtn.bind(on_release=self.refresh_screen) 
+            if not self.dialog:
+                self.dialog = MDDialog(
+                title= "You can't register with an incomplete form.",
+                buttons= [tryAgainBtn]
+                )
+            self.dialog.open()
 
     def extractUserInput(self):
         full_name = self.ids['full_name_textInput'].text
@@ -152,53 +166,69 @@ class SignUp(Screen):
     async def registerUserAPICall(self, full_name, user_id, password, password2):
         registration_url = "http://127.0.0.1:8000/api/account/register/"
         async with aiohttp.ClientSession() as session:
-            response = await session.post(
-                registration_url,
-                data = {
-                    'userID': user_id,
-                    'fullName': full_name,
-                    'password': password,
-                    'password2': password2
-                }
-            )
-            
-            result = response
-            return result
+            try:
+                response = await session.post(
+                    registration_url,
+                    data = {
+                        'user_id': user_id,
+                        'full_name': full_name,
+                        'password': password,
+                        'password2': password2
+                    }
+                )
+                
+                result = response
+                return result
+            except aiohttp.ClientConnectionError:
+                result = None
+                return result
     
     def show_alert_dialog(self, response):
         #print(response.status)
-        if response.status == 200 or response.status == 201:
-            loginBtn = MDFlatButton(
-                    text="Log In", #TODO
-                    theme_text_color="Custom",
-                    text_color=(36/255, 120/255, 109/255, 1),
+        if response != None:
+            if response.status == 200 or response.status == 201:
+                loginBtn = MDFlatButton(
+                        text="Log In", #TODO
+                        theme_text_color="Custom",
+                        text_color=(36/255, 120/255, 109/255, 1),
+                        )
+                loginBtn.bind(on_release=self.changeScreenToLogInScreen) 
+                if not self.dialog:
+                    self.dialog = MDDialog(
+                    title= "Registration Successful",
+                    buttons= [loginBtn]
                     )
-            loginBtn.bind(on_release=self.changeScreenToLogInScreen) 
-            if not self.dialog:
-                self.dialog = MDDialog(
-                title= "Registration Successful",
-                buttons= [loginBtn]
-                )
-            self.dialog.open()
-        else:
+                self.dialog.open()
+            else:
+                tryAgainBtn = MDFlatButton(
+                        text="Try Again", 
+                        theme_text_color="Custom",
+                        text_color=(36/255, 120/255, 109/255, 1),
+                        )
+                tryAgainBtn.bind(on_release=self.refresh_screen) 
+                if not self.dialog:
+                    self.dialog = MDDialog(
+                    title= "Registration Unsuccessful, check for invalid inputs",
+                    buttons= [tryAgainBtn]
+                    )
+                self.dialog.open()
+        elif response == None:
             tryAgainBtn = MDFlatButton(
-                    text="Try Again", 
-                    theme_text_color="Custom",
-                    text_color=(36/255, 120/255, 109/255, 1),
-                    )
+                        text="Try Again", 
+                        theme_text_color="Custom",
+                        text_color=(36/255, 120/255, 109/255, 1),
+                        )
             tryAgainBtn.bind(on_release=self.refresh_screen) 
             if not self.dialog:
                 self.dialog = MDDialog(
-                title= "Registration Unsuccessful, check for invalid inputs",
+                title= "Sorry, something is wrong with the server. Please try again later",
                 buttons= [tryAgainBtn]
                 )
             self.dialog.open()
 
-        #self.dialog.close()
-
     def refresh_screen(self, button):
         self.dialog.dismiss()
-        
+        self.dialog = None
 
     def changeScreenToLogInScreen(self, button):
         self.manager.current = "Screen5"
