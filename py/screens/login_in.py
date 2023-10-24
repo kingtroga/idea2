@@ -115,7 +115,7 @@ class LoginIn(Screen):
         self.show_alert_dialog(result, response)
 
     async def loginUserAPICall(self, user_id, password):
-        login_url = "http://127.0.0.1:8000/api/account/login/"
+        login_url = "https://atary.pythonanywhere.com/api/account/login/"
         async with aiohttp.ClientSession() as session:
             try:
                 response = await session.post(

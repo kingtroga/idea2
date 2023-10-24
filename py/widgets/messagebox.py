@@ -7,6 +7,8 @@ from kivy.lang import Builder
 from kivy.properties import ListProperty, StringProperty, BooleanProperty, NumericProperty
 from kivy.core.window import Window 
 from kivymd.uix.label import MDLabel
+from kivymd.uix.button import MDFlatButton
+from kivymd.uix.dialog import MDDialog
 from kivy.metrics import dp
 Builder.load_file('kv\widgets\messageitem.kv')
 import websocket
@@ -63,6 +65,7 @@ class MessageBox(TextInput):
     def __init__(self, **kwargs):
         super(MessageBox, self).__init__(**kwargs)
         self.counter = 1
+        self.dialog = None
         self.outmessage = []
         self.inmessage = []
         self.message = None
@@ -98,11 +101,28 @@ class MessageBox(TextInput):
         self.parent.children[0].children[0].children[0].add_widget(self.msg)
 
         # send the message to everyone in the group
-        self.app.wsapp.send(json.dumps({
-            'type': 'chat_message',
-            'message': str(self.text),
-            'user_id': int(self.app.userID),
-        }))
+        try:
+            self.app.wsapp.send(json.dumps({
+                'type': 'chat_message',
+                'message': str(self.text),
+                'user_id': int(self.app.userID),
+            }))
+        except websocket._exceptions.WebSocketConnectionClosedException:
+            loginErrorMsg = "Sorry, but hosting an app that supports WebSockets as a student is expensive. Check out the Youtube video of it in the mean time :)"
+            #print(loginErrorMsg)
+            tryAgainBtn = MDFlatButton(
+                    text="Try Again", 
+                    theme_text_color="Custom",
+                    text_color=(36/255, 120/255, 109/255, 1),
+                    )
+            tryAgainBtn.bind(on_release=self.refresh_screen) 
+            if not self.dialog:
+                self.dialog = MDDialog(
+                title= loginErrorMsg,
+                buttons= [tryAgainBtn]
+                )
+            self.dialog.open()
+
         
         # RESET THE MESSAGE BOX
         self.text = ""
@@ -110,6 +130,10 @@ class MessageBox(TextInput):
         # FOR GOOD SPACING (Limit the input to 50 characters)
         if len(self.msg.text) >= 50:
             self.counter = round((self.counter - 0.016),2)
+    
+    def refresh_screen(self, button):
+        self.dialog.dismiss()
+        self.dialog = None
 
     def outMessage(self, dt=None):
         

@@ -23,7 +23,7 @@ class ContactsPage(Screen):
         '''Builds a list of icons for the screen MDIcons.'''
 
         def add_contact_item(contact):
-            avatar_url = "http://127.0.0.1:8000/media/default/account.png"
+            avatar_url = "https://atary.pythonanywhere.com/media/default/account.png"
             self.ids.rv.data.append(
                 {
                     "viewclass": "ContactItem",
