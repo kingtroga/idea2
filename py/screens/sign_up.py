@@ -164,7 +164,7 @@ class SignUp(Screen):
         self.show_alert_dialog(response)
 
     async def registerUserAPICall(self, full_name, user_id, password, password2):
-        registration_url = "http://127.0.0.1:8000/api/account/register/"
+        registration_url = "https://atary.pythonanywhere.com/api/account/register/"
         async with aiohttp.ClientSession() as session:
             try:
                 response = await session.post(
